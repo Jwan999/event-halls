@@ -8,25 +8,37 @@ use Illuminate\Support\Facades\Response;
 
 class OwnerController extends Controller
 {
+// show the add owner view
     public function showAddOwnerView()
     {
         return view('dashboard.owners.addOwner');
     }
 
+//functiona that adds an owner from the dashboard
     public function addOwner(Request $request)
     {
         $rules = [
             "email" => "required",
             "phone" => "integer",
         ];
-
-        $data = $this->validate($request, $rules);
-        $data["give_sponsorship"] = $request->has('give_sponsorship');
-
-        $owner = Owner::create($data);
-//        return Response::redirectTo('/places/add');
+        self::saveOwners($request, $rules);
+        return Response::redirectTo('/dashboard/owners');
     }
 
+//function that saves the owner
+    private function saveOwners(Request $request, $rules)
+    {
+        $data = $this->validate($request, $rules);
+        $data["give_sponsorship"] = $request->has('give_sponsorship');
+        $owner = Owner::create($data);
+    }
+
+    public function openAddPlaceUserSite()
+    {
+        return Response::redirectTo('/places/add');
+    }
+
+//    function that shows all the owners
     public function ownersView()
     {
         return view('dashboard.owners.owners');
@@ -40,6 +52,5 @@ class OwnerController extends Controller
             "owners" => $owners,
         ];
         return Response::json($response);
-
     }
 }

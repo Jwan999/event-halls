@@ -6,9 +6,9 @@
         <div class="col">
             {{--search bar--}}
             <div class="row justify-content-start">
-                <div class="col-md-8 m-0">
+                <div class="col-md-6 mt-4">
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input v-model="findPlace" type="text" class="form-control" placeholder="Look for a place or a location">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button"
                                     data-toggle="dropdown"
@@ -44,7 +44,7 @@
             </div>
             {{--places row--}}
             <div class="row">
-                <div v-for="place in places" class="col-md-4 p-0 m-3">
+                <div v-for="place in searchedPlaces" class="col-md-4 p-0 m-3">
                     <div class="card ">
                         <img :src="place.image" class="card-img-top image-size" alt="...">
                         <div class="card-body">
@@ -83,17 +83,7 @@
 
         </div>
 
-        {{--menu --}}
-        <div class="col-md-1 ">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="/favorites"><h2 class="text-center m-0 p-0">♥</h2></a></li>
-                <li class="list-group-item"><a href="/owners"><h2 class="text-center m-0 p-0">+</h2></a></li>
-                {{--<li class="list-group-item">types</li>--}}
-            </ul>
-        </div>
     </div>
-
-
 
 @endsection
 
@@ -102,6 +92,11 @@
         let vue = new Vue({
             el: "#search",
             data: {
+                place: {
+                    place_name: "",
+                    location: "",
+                },
+                findPlace: "",
                 places: {},
                 // isShown: true,
                 types: [],
@@ -134,6 +129,14 @@
             mounted() {
                 this.getPlaces();
                 this.getTypes()
+            }, computed: {
+                searchedPlaces() {
+                    return this.places.filter((place) => {
+                            return place.place_name.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase())
+                                || place.location.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase());
+                        }
+                    );
+                }
             }
         })
     </script>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center m-5">
         <div class="col-md-6">
             @include('layouts.errors')
-            <form action="/places/add" method="post" enctype="multipart/form-data">
+            <form action="/places/add/1" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                     <div class="custom-file">
-                        <input  name="image" type="file" class="custom-file-input" id="validatedCustomFile">
+                        <input name="image" type="file" class="custom-file-input" id="validatedCustomFile">
                         <label class="custom-file-label">Choose file...</label>
                     </div>
                 </div>

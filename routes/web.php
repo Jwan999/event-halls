@@ -28,9 +28,12 @@ Route::group(["middleware" => "auth:admin", "prefix" => "/dashboard",], function
     Route::delete('/places/{place}', 'PlaceController@delete');
     Route::get('/places/{place}', 'PlaceController@editView');
     Route::patch('/places/{place}/edit', 'PlaceController@edit');
+    Route::post('/places/add/{user}', 'PlaceController@addPlace');
 
     Route::get('/owners/add', 'OwnerController@showAddOwnerView');
     Route::get('/owners', 'OwnerController@ownersView');
+    Route::post('/owners/add', 'OwnerController@addOwner');
+
 
     Route::post('/types/add', 'TypeController@addPlaceType');
     Route::get('/types', 'TypeController@typesView');
@@ -58,10 +61,10 @@ Route::get('/favorites/add', 'FavoriteController@store');
 
 Route::get('/places/place/{id}', 'UserSiteController@placeView');
 Route::get('/places/add', 'UserSiteController@addPlaceView');
-Route::post('/places/add', 'PlaceController@addPlace');
+Route::post('/places/add/{user}', 'PlaceController@openHomeAfterAdd');
 
 Route::get('/owners/add', 'UserSiteController@showAddOwner');
-Route::post('/owners/add', 'OwnerController@addOwner');
+Route::post('/owners/add', 'OwnerController@openAddPlaceUserSite');
 
 Route::get('/book', 'BookController@index');
 

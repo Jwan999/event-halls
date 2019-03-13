@@ -28,6 +28,7 @@ class PlaceController extends Controller
     public function showAllPlacesJson(Request $request)
     {
 
+
         $queryBuilder = Place::orderBy("id");
 
         if ($request->has("type")) {
@@ -111,6 +112,38 @@ class PlaceController extends Controller
     // creating and adding a place to the database
     public function addPlace(Request $request, User $user)
     {
+        $rules = [
+            "place_name" => "required",
+            "type" => "required",
+            "image" => "required|image",
+            "hall_name" => "required",
+            "location" => "required",
+            "hall_max" => "required",
+            "low_price" => "required",
+            "high_price" => "required",
+            "description" => "required",
+        ];
+
+        self::savePlace($request, $user, $rules);
+
+        return Response::redirectTo("/places");
+    }
+
+
+    public function savePlace($request, User $user, $rules)
+    {
+        $data = $this->validate($request, $rules);
+        $url = request()->image->store("uploads");
+        $data["user_id"] = $user->id;
+
+        $data['image'] = $url;
+
+        $place = Place::create($data);
+
+    }
+
+    public function openHomeAfterAdd(Request $request, User $user)
+    {
 
         $rules = [
             "place_name" => "required",
@@ -123,19 +156,8 @@ class PlaceController extends Controller
             "high_price" => "required",
             "description" => "required",
         ];
-//        $id = User::get('user_id');
-//        $data["user_id"] = User::where('id', $id)->get;
-//        dd($id);
-//        $data["user_id"] = 1;
-        $data = $this->validate($request, $rules);
-        $url = request()->image->store("uploads");
-        $data["user_id"] = $user->id;
-        dd($data);
-        $data['image'] = $url;
+        self::savePlace($request, $user, $rules);
+        return Response::redirectTo("/home");
 
-        $place = Place::create($data);
-
-        return Response::redirectTo("/places");
     }
-
 }

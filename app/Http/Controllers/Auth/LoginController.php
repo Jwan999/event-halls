@@ -55,12 +55,9 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-
-
         try {
             $user = Socialite::driver('google')->stateless()->user();
         } catch (\Exception $e) {
-            dd($e);
             return redirect('/login');
         }
 
@@ -72,8 +69,8 @@ class LoginController extends Controller
         } else {
             // create a new user
             $newUser = new User;
+            $user->name= "jwana";
             $newUser->name = $user->name;
-            dd($user->name);
             $newUser->email = $user->email;
             $newUser->provider_id = $user->id;
             $newUser->provider = "google";

@@ -20,12 +20,18 @@
         .zain-bg {
             background: linear-gradient(to bottom right, #6e4f90 0%, #5561AB 100%)
         }
-        .faded{
+
+        .faded {
             opacity: 0.8;
         }
+
         .image-size {
             height: 25vh;
             object-fit: cover;
+        }
+
+        .color {
+            color: white;
         }
 
         .round {
@@ -35,13 +41,32 @@
 </head>
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-lg zain-bg ">
-    <a class="navbar-brand text-white" href="#">Events hall</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+<nav class="navbar navbar-expand-lg zain-bg navbar-dark ">
+    <a class="navbar-brand text-light" href="#">Events hall</a>
+    <button class="navbar-toggler color" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
+    <div class="mt-1 collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/favorites">Favorites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/places/add">Add place</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <a class="text-light" href="/redirect">Sign up</a>
+            {{--<button class="btn btn-outline-info text-light btn-sm my-2 my-sm-0" type="submit">Sign up</button>--}}
+        </form>
+    </div>
 </nav>
+
 
 @yield('content')
 
