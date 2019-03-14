@@ -119,7 +119,7 @@
 
 <script>
     if (WURFL.form_factor === "Smartphone") {
-        alert('The dashboard is not suitable for mobile screen, i advice to open it on a desktop');
+        alert('The dashboard is not suitable for mobile screen, i advice you to open it on a desktop');
     }
 </script>
 </body>

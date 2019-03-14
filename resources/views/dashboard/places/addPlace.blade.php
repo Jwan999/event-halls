@@ -32,10 +32,10 @@
                 <div class="form-group">
                     <div class="row align-items-center">
                         <div class="col-md-6">
-                            <input name="hall_name" type="text" class="form-control" placeholder="Hall name">
+                            <input name="hall_name" type="text" class="form-control mt-2" placeholder="Hall name">
                         </div>
                         <div class="col-md-6">
-                            <input name="hall_max" type="number" class="form-control" placeholder="Max people number">
+                            <input name="hall_max" type="number" class="form-control mt-2" placeholder="Max people number">
                         </div>
                     </div>
                 </div>

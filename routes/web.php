@@ -21,7 +21,8 @@ Route::get('/admin/login', 'Admin\LoginController@showLoginForm')->name("login")
 Route::post('/admin/login', 'Admin\LoginController@login');
 Route::get('/admin/logout', 'Admin\LoginController@logout');
 
-Route::group([ "prefix" => "/dashboard",], function () {
+//"middleware" => "auth:admin",
+Route::group(["prefix" => "/dashboard",], function () {
     Route::get('/', 'DashboardController@openDashboard');
 
     Route::get('/places', 'PlaceController@showAllPlaces');
@@ -59,16 +60,14 @@ Route::get('/', 'UserSiteController@mainPageView');
 Route::get('/places/place/{id}', 'UserSiteController@placeView');
 
 //Route::group(["middleware" => "auth:user"], function () {
-    Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView');
-    Route::post('/places/add/{owner}', 'PlaceController@savePlaceRedirectHome');
-    Route::get('/favorites', 'FavoriteController@index');
-    Route::get('/favorites/add', 'FavoriteController@store');
-    Route::get('/owners/add', 'UserSiteController@showAddOwner');
-    Route::post('/owners/add', 'OwnerController@addOwnerUserSite');
-    Route::get('/book', 'BookController@index');
+Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView');
+Route::post('/places/add/{owner}', 'PlaceController@savePlaceRedirectHome');
+Route::get('/favorites', 'FavoriteController@index');
+Route::get('/favorites/add', 'FavoriteController@store');
+Route::get('/owners/add', 'UserSiteController@showAddOwner');
+Route::post('/owners/add', 'OwnerController@addOwnerUserSite');
+Route::get('/book', 'BookController@index');
 //});
-
-
 
 
 Auth::routes();

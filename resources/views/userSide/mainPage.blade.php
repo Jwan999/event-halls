@@ -59,10 +59,16 @@
             <li class="nav-item">
                 <a class="nav-link text-light" href="/owners/add">Add place</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/dashboard/">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/about/">About</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <a href="/redirect/google"
-               class="text-white">{{ __('Google Sign in') }}</a>
+               class="text-white">{{ __('Sign in') }}</a>
         </form>
     </div>
 </nav>
