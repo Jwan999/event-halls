@@ -5,8 +5,11 @@
     <div class="row justify-content-center m-5">
         <div class="col-md-6">
             @include('layouts.errors')
-            <form action="/places/add/1" method="post" enctype="multipart/form-data">
+            <form action='/places/add/{{$owner->id}}' method="post" enctype="multipart/form-data">
                 @csrf
+                <div class="form-group">
+                    <input name="owner_id" type="hidden" class="form-control hidden" value="{{$owner->id}}">
+                </div>
 
                 <div class="form-group">
                     <input name="place_name" type="text" class="form-control" placeholder="Place name">
@@ -78,12 +81,21 @@
             el: "#type",
             data: {
                 types: [],
+                // owner:"",
+
             },
             methods: {
                 getTypes() {
                     axios.get('/api/types').then(response => {
                         this.types = response.data.types
                     })
+                },
+                getOwner() {
+
+                    // this.owner = window.location.pathname.split("/").pop();
+
+                    // console.log(owner);
+                    // this.getPlace(id);
                 }
             },
             mounted() {

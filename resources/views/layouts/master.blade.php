@@ -35,7 +35,7 @@
                         <br>
                         <br>
                         <br>
-                        <h4 class="text-white">{{auth()->user()->name}}</h4>
+                        {{--<h4 class="text-white">{{auth()->user()->name}}</h4>--}}
                     </div>
                 </div>
             </div>

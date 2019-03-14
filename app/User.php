@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'provider', 'provider_id'
     ];
 
     /**
@@ -37,8 +37,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function places()
+    public function favoritePlaces()
     {
-        return $this->belongsToMany(Place::class);
+        return $this->hasMany(Place::class);
+    }
+
+    public function place()
+    {
+        return $this->hasMany(Place::class);
     }
 }

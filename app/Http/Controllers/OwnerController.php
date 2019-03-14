@@ -14,12 +14,13 @@ class OwnerController extends Controller
         return view('dashboard.owners.addOwner');
     }
 
-//functiona that adds an owner from the dashboard
+//function that adds an owner from the dashboard
     public function addOwner(Request $request)
     {
         $rules = [
             "email" => "required",
             "phone" => "integer",
+            "name" => "required"
         ];
         self::saveOwners($request, $rules);
         return Response::redirectTo('/dashboard/owners');
@@ -29,14 +30,27 @@ class OwnerController extends Controller
     private function saveOwners(Request $request, $rules)
     {
         $data = $this->validate($request, $rules);
-        $data["give_sponsorship"] = $request->has('give_sponsorship');
-        $owner = Owner::create($data);
+//        $data = ["owner_id" => $owner->id];
+//        $data["give_sponsorship"] = $request->has('give_sponsorship');
+        return Owner::create($data);
     }
 
-    public function openAddPlaceUserSite()
+//adding owner from the userSite
+    public function addOwnerUserSite(Request $request)
     {
-        return Response::redirectTo('/places/add');
+
+        $rules = [
+            "email" => "required",
+            "phone" => "required",
+            "name" => "required"
+        ];
+
+
+        $owner = self::saveOwners($request, $rules);
+//        dd($owner);
+        return Response::redirectTo('/places/add/' . $owner->id);
     }
+
 
 //    function that shows all the owners
     public function ownersView()
@@ -44,6 +58,7 @@ class OwnerController extends Controller
         return view('dashboard.owners.owners');
     }
 
+//the owners api
     public function ownersJson()
     {
         $owners = Owner::all();

@@ -44,7 +44,7 @@
             </div>
             {{--places row--}}
             <div class="row">
-                <div v-for="place in searchedPlaces" class="col-md-4 p-0 m-3">
+                <div v-for="place in places" class="col-md-4 p-0 m-3">
                     <div class="card ">
                         <img :src="place.image" class="card-img-top image-size" alt="...">
                         <div class="card-body">
@@ -130,13 +130,13 @@
                 this.getPlaces();
                 this.getTypes()
             }, computed: {
-                searchedPlaces() {
-                    return this.places.filter((place) => {
-                            return place.place_name.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase())
-                                || place.location.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase());
-                        }
-                    );
-                }
+                // searchedPlaces() {
+                //     return this.places.filter((place) => {
+                //             return place.place_name.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase())
+                //                 || place.location.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase());
+                //         }
+                //     );
+                // }
             }
         })
     </script>

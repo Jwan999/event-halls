@@ -10,16 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('auth/redirect', 'Auth\LoginController@redirectToProvider');
-Route::get('redirect', 'Auth\LoginController@redirectToProvider');
-Route::get('auth/google', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')
+    ->name('login.provider');
+Route::get('{driver}/callback', 'Auth\LoginController@handleProviderCallback')
+    ->name('login.callback');
 Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/admin/login', 'Admin\LoginController@showLoginForm')->name("login");
 Route::post('/admin/login', 'Admin\LoginController@login');
 Route::get('/admin/logout', 'Admin\LoginController@logout');
 
-Route::group(["middleware" => "auth:admin", "prefix" => "/dashboard",], function () {
+Route::group([ "prefix" => "/dashboard",], function () {
     Route::get('/', 'DashboardController@openDashboard');
 
     Route::get('/places', 'PlaceController@showAllPlaces');
@@ -34,7 +36,6 @@ Route::group(["middleware" => "auth:admin", "prefix" => "/dashboard",], function
     Route::get('/owners', 'OwnerController@ownersView');
     Route::post('/owners/add', 'OwnerController@addOwner');
 
-
     Route::post('/types/add', 'TypeController@addPlaceType');
     Route::get('/types', 'TypeController@typesView');
     Route::delete('/types/{type}', 'TypeController@delete');
@@ -42,7 +43,6 @@ Route::group(["middleware" => "auth:admin", "prefix" => "/dashboard",], function
     Route::get('/users', 'UserController@index');
 
 });
-
 
 Route::group(["prefix" => "/api"], function () {
     Route::get('/owners', 'OwnerController@ownersJson');
@@ -56,18 +56,17 @@ Route::group(["prefix" => "/api"], function () {
 });
 
 Route::get('/home', 'UserSiteController@mainPageView');
-Route::get('/favorites', 'FavoriteController@index');
-Route::get('/favorites/add', 'FavoriteController@store');
-
 Route::get('/places/place/{id}', 'UserSiteController@placeView');
-Route::get('/places/add', 'UserSiteController@addPlaceView');
-Route::post('/places/add/{user}', 'PlaceController@openHomeAfterAdd');
 
-Route::get('/owners/add', 'UserSiteController@showAddOwner');
-Route::post('/owners/add', 'OwnerController@openAddPlaceUserSite');
+//Route::group(["middleware" => "auth:user"], function () {
+    Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView');
+    Route::post('/places/add/{owner}', 'PlaceController@savePlaceRedirectHome');
+    Route::get('/favorites', 'FavoriteController@index');
+    Route::get('/favorites/add', 'FavoriteController@store');
+    Route::get('/owners/add', 'UserSiteController@showAddOwner');
+    Route::post('/owners/add', 'OwnerController@addOwnerUserSite');
+    Route::get('/book', 'BookController@index');
+//});
 
-Route::get('/book', 'BookController@index');
 
-//Route::post('/book','BookController@index');
-//Auth::routes();
 

@@ -36,7 +36,6 @@ class LoginController extends Controller
             "admin" => $admin
         ];
         return Response::json($response);
-
     }
 
     public function redirectPath()

@@ -6,11 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
-    protected $fillable = ["place_name", "type", "location", "hall_name", "hall_max", "description", "image", "user_id", "low_price", "high_price"];
+    protected $fillable = ["place_name", "type", "location", "hall_name", "hall_max", "description", "image","owner_id", "low_price", "high_price"];
+    protected $with = ["owner"];
 
-    public function users()
+//    public function users()
+//    {
+//        return $this->belongsToMany(User::class);
+//    }
+//
+//
+    public function owner()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(Owner::class);
     }
 
 

@@ -18,6 +18,12 @@ return [
         'passwords' => 'users',
     ],
 
+    'socialite' => [
+        'drivers' => [
+            'google',
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -43,6 +49,10 @@ return [
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
+        ],
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
         ],
 
         'api' => [
@@ -77,12 +87,12 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
-        ]
+        ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+//         'users' => [
+//             'driver' => 'database',
+//             'table' => 'users',
+//         ],
     ],
 
     /*

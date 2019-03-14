@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Auth;
 use \App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Http\Request;
+use Socialite;
 use Illuminate\Http\Response;
-use Auth;
-
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -30,7 +31,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard/';
+    protected $redirectTo = '/home/';
+
 
     /**
      * Create a new controller instance.
@@ -42,42 +44,47 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectToProvider()
+    public function redirectToProvider($driver, Request $request)
     {
-        return Socialite::driver('google')->redirect();
-    }
 
+        return Socialite::driver($driver)->redirect();
+//        dd($smth);
+    }
 
     /**
      * Obtain the user information from Google.
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($driver)
     {
+//        dd($driver);
         try {
-            $user = Socialite::driver('google')->stateless()->user();
+            $user = Socialite::driver($driver)->stateless()->user();
+//            dd($user);
         } catch (\Exception $e) {
-            return redirect('/login');
+            dd($e);
+            return redirect()->route('login');
         }
 
-        // check if they're an existing user
-        $existingUser = User::where('email', $user->email)->first();
+        $existingUser = User::where('email', $user->getEmail())->first();
+
         if ($existingUser) {
-            // log them in
             auth()->login($existingUser, true);
         } else {
-            // create a new user
             $newUser = new User;
-            $user->name= "jwana";
-            $newUser->name = $user->name;
-            $newUser->email = $user->email;
-            $newUser->provider_id = $user->id;
-            $newUser->provider = "google";
+            $newUser->provider = $driver;
+            $newUser->provider_id = $user->getId();
+            $newUser->name = $user->getName();
+            $newUser->email = $user->getEmail();
+//            $newUser->email_verified_at = now();
+            $newUser->avatar = $user->getAvatar();
             $newUser->save();
-//            auth()->login($newUser, true);
+
+            auth()->login($newUser, true);
         }
-        return redirect()->to('/home');
+//        dd($this->redirectPath());
+        return redirect('/home');
     }
 
     public function findOrCreateUser($user, $provider)
@@ -96,6 +103,17 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        return redirect()->to('/dashboard/');
+        return redirect()->to('/home/');
     }
+
+    public function guard()
+    {
+        return Auth::guard('user');
+    }
+
+    public function showLoginForm()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
 }

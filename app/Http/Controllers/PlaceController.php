@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Owner;
 use \App\Place;
 use App\User;
 use Illuminate\Http\Request;
@@ -27,8 +28,6 @@ class PlaceController extends Controller
     //previewing all the places from the database
     public function showAllPlacesJson(Request $request)
     {
-
-
         $queryBuilder = Place::orderBy("id");
 
         if ($request->has("type")) {
@@ -103,14 +102,14 @@ class PlaceController extends Controller
         return Response::redirectTo("/dashboard/places");
     }
 
-//showing the adding places view
+//showing the adding places view from the dashboard
     public function showAddPlace()
     {
         return view('dashboard.places.addPlace');
     }
 
     // creating and adding a place to the database
-    public function addPlace(Request $request, User $user)
+    public function addPlace(Request $request)
     {
         $rules = [
             "place_name" => "required",
@@ -124,30 +123,34 @@ class PlaceController extends Controller
             "description" => "required",
         ];
 
-        self::savePlace($request, $user, $rules);
+        self::savePlace($request, $rules);
 
         return Response::redirectTo("/places");
     }
 
 
-    public function savePlace($request, User $user, $rules)
+    public function savePlace($request, $rules)
     {
         $data = $this->validate($request, $rules);
         $url = request()->image->store("uploads");
-        $data["user_id"] = $user->id;
 
+//        $data["user_id"] = $user->id;
+//        $data["owner"] = $place->owner();
+//        dd($data);
         $data['image'] = $url;
 
         $place = Place::create($data);
 
     }
 
-    public function openHomeAfterAdd(Request $request, User $user)
+//function let's the user to add a place from the usersite
+    public function savePlaceRedirectHome(Request $request)
     {
-
+//        dd($owner);
         $rules = [
             "place_name" => "required",
             "type" => "required",
+            'owner_id'=>'required',
             "image" => "required|image",
             "hall_name" => "required",
             "location" => "required",
@@ -156,7 +159,8 @@ class PlaceController extends Controller
             "high_price" => "required",
             "description" => "required",
         ];
-        self::savePlace($request, $user, $rules);
+
+        self::savePlace($request, $rules);
         return Response::redirectTo("/home");
 
     }

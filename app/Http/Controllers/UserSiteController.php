@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Owner;
 use Illuminate\Http\Request;
 
 class UserSiteController extends Controller
@@ -16,9 +17,10 @@ class UserSiteController extends Controller
         return view('userSide.placeView');
     }
 
-    public function addPlaceView()
+    public function addPlaceView(Owner $owner)
     {
-        return view('userSide.addPlace');
+
+        return view('userSide.addPlace',["owner"=>$owner]);
     }
     public function showAddOwner(){
         return view('userSide.addOwner');

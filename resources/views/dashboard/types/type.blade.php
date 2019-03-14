@@ -4,6 +4,7 @@
 
     <div class="row justify-content-start m-5">
         <div class="col-md-4">
+            @include('layouts.errors')
             {{--adding places types--}}
             <form action="/dashboard/types/add" method="post">
                 @csrf

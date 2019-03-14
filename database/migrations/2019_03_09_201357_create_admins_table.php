@@ -1,5 +1,6 @@
 <?php
 
+use App\Admin;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -20,6 +21,12 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+//        $mainAdmin = [
+//            "name" => "jwana",
+//            "password" => Hash::make("jwana")
+//        ];
+//        Admin::create($mainAdmin);
     }
 
     /**

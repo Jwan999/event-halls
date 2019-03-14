@@ -57,12 +57,12 @@
                 <a class="nav-link text-light" href="/favorites">Favorites</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="/places/add">Add place</a>
+                <a class="nav-link text-light" href="/owners/add">Add place</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <a class="text-light" href="/redirect">Sign up</a>
-            {{--<button class="btn btn-outline-info text-light btn-sm my-2 my-sm-0" type="submit">Sign up</button>--}}
+            <a href="/redirect/google"
+               class="text-white">{{ __('Google Sign in') }}</a>
         </form>
     </div>
 </nav>

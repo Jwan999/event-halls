@@ -17,15 +17,15 @@ class CreatePlacesTable extends Migration
             $table->increments('id');
             $table->string('place_name');
             $table->string('type');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->string('location');
             $table->string('hall_name');
             $table->integer('hall_max');
             $table->integer('high_price');
             $table->integer('low_price');
             $table->text('description');
-            $table->text('owner_id')->nullable();
-            $table->integer('user_id');
+            $table->text('owner_id');
+//            $table->integer('user_id');
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@
                         <h3>@{{ place.place_name }}</h3>
                     </div>
                 </div>
-                
+
                 {{--description + contact info--}}
                 <div class="row justify-content-between ml-5">
                     <div class="col-md-6">
@@ -20,12 +20,11 @@
                     <div class="col-md-3 mr-4">
                         <div class="card">
                             <div class="card-header zain-bg text-white">
-                                owner name
+                              @{{ place.owner.name }}
                             </div>
                             <div class="card-body">
-                                owner email<br>
-                                owner phone number<br>
-                                give sponsorship
+                               @{{ place.owner.email }}<br>
+                              @{{ place.owner.phone }}<br>
                             </div>
                         </div>
                     </div>
@@ -43,7 +42,7 @@
                     <div class="col-md-3 mr-4">
                         <div class="card">
                             <div class="card-header zain-bg text-white">
-                                avaibilty
+                                availability
                             </div>
                             <div class="card-body">
                                 calender
