@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <title>Hello, world!</title>
+    <title>Event halls</title>
     <style>
         body {
             overflow-x: hidden;
@@ -31,7 +31,6 @@
             <div class="col">
                 <div class="card bg-dark">
                     <div class="card-body">
-                        {{--<img :src="admin.image" alt="">--}}
                         <br>
                         <br>
                         <br>
@@ -102,20 +101,6 @@
 <script type="text/javascript" src="//wurfl.io/wurfl.js"></script>
 
 @stack('scripts')
-{{--<script>--}}
-{{--let vue = new Vue({--}}
-{{--el: "#admin",--}}
-{{--data: {--}}
-{{--admins: [],--}}
-{{--}, methods: {--}}
-{{--getAdmin() {--}}
-{{--axios.get('/api/admin').then(response => {--}}
-{{--this.admins = response.data.admins--}}
-{{--})--}}
-{{--}--}}
-{{--}--}}
-{{--})--}}
-{{--</script>--}}
 
 <script>
     if (WURFL.form_factor === "Smartphone") {

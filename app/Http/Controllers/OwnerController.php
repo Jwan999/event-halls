@@ -38,19 +38,14 @@ class OwnerController extends Controller
 //adding owner from the userSite
     public function addOwnerUserSite(Request $request)
     {
-
         $rules = [
             "email" => "required",
             "phone" => "required",
             "name" => "required"
         ];
-
-
         $owner = self::saveOwners($request, $rules);
-//        dd($owner);
         return Response::redirectTo('/places/add/' . $owner->id);
     }
-
 
 //    function that shows all the owners
     public function ownersView()

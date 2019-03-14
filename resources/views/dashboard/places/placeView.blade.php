@@ -27,7 +27,6 @@
         let vue = new Vue({
             el: "#place",
             data: {
-                // places: [],
                 place: {},
             },
             methods: {

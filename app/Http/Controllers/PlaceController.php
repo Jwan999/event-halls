@@ -42,10 +42,6 @@ class PlaceController extends Controller
             $queryBuilder->orderBy('low_price', 'asc');
 
         }
-//        $type = $request->type;
-//        Place::when($type, function ($query, $type){
-//            return $query->where('type',t)
-//        })
 
         $places = $queryBuilder->get();
         $response = [
@@ -53,7 +49,6 @@ class PlaceController extends Controller
             "places" => $places
         ];
         return Response::json($response);
-
     }
 
 //places view
@@ -96,7 +91,6 @@ class PlaceController extends Controller
         $url = request()->image->store("uploads");
         $data['image'] = $url;
 
-//      todo  explaining the difference between this thing and a static function
         $place->update($data);
 
         return Response::redirectTo("/dashboard/places");
@@ -133,10 +127,6 @@ class PlaceController extends Controller
     {
         $data = $this->validate($request, $rules);
         $url = request()->image->store("uploads");
-
-//        $data["user_id"] = $user->id;
-//        $data["owner"] = $place->owner();
-//        dd($data);
         $data['image'] = $url;
 
         $place = Place::create($data);
@@ -146,11 +136,10 @@ class PlaceController extends Controller
 //function let's the user to add a place from the usersite
     public function savePlaceRedirectHome(Request $request)
     {
-//        dd($owner);
         $rules = [
             "place_name" => "required",
             "type" => "required",
-            'owner_id'=>'required',
+            'owner_id' => 'required',
             "image" => "required|image",
             "hall_name" => "required",
             "location" => "required",

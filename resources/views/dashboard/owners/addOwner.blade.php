@@ -27,7 +27,6 @@
                 {{--</div>--}}
                 <div class="row justify-content-end">
                     <div class="col-auto">
-                        {{--<input class="btn btn-outline-info btn-sm" href="/dashboard/owners" type="submit" value="ADD">--}}
                         <button type="submit" class="btn btn-outline-info btn-sm">ADD</button>
                     </div>
                 </div>
@@ -39,13 +38,13 @@
 
 @endsection
 
-@push('scripts')
-    <script>
-        let vue = new Vue({
-            el: "#owner",
-            data: {
-                give_sponsorship: false,
-            },
-        })
-    </script>
-@endpush
+{{--@push('scripts')--}}
+    {{--<script>--}}
+        {{--let vue = new Vue({--}}
+            {{--el: "#owner",--}}
+            {{--data: {--}}
+                {{--give_sponsorship: false,--}}
+            {{--},--}}
+        {{--})--}}
+    {{--</script>--}}
+{{--@endpush--}}

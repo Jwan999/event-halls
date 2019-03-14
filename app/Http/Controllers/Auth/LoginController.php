@@ -77,13 +77,11 @@ class LoginController extends Controller
             $newUser->provider_id = $user->getId();
             $newUser->name = $user->getName();
             $newUser->email = $user->getEmail();
-//            $newUser->email_verified_at = now();
             $newUser->avatar = $user->getAvatar();
             $newUser->save();
 
             auth()->login($newUser, true);
         }
-//        dd($this->redirectPath());
         return redirect('/');
     }
 

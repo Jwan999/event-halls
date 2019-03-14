@@ -27,22 +27,11 @@
                         </thead>
 
                         <tbody class="bg-white">
-                        <tr v-for="user in users">
+                        <tr v-for="user in searchedUsers">
                             <td><a>@{{user.name}}</a></td>
                             <td>@{{user.email}}</td>
 
                             <td>@{{user.place_id}}</td>
-                            {{--<td>--}}
-                            {{--<div class="row">--}}
-                            {{--<div class="col m-0 p-0">--}}
-                            {{--<a @click="removePlace(user.id)" href='' class="badge badge-danger">Delete</a>--}}
-                            {{--</div>--}}
-                            {{--<div class="col m-0 p-0">--}}
-                            {{--<a :href=`/dashboard/places/${place.id}/edit` class="badge badge-info">Edit</a>--}}
-                            {{--</div>--}}
-                            {{--</d iv>--}}
-                            {{--</td>--}}
-
                         </tr>
 
                         </tbody>
@@ -75,11 +64,6 @@
                         this.users = response.data.users;
                     })
                 },
-                // removePlace(id) {
-                //     axios.delete(`/dashboard/places/${id}`).then(response => {
-                //         window.location.reload()
-                //     })
-                // },
             },
             mounted() {
                 this.getUsers();
@@ -87,7 +71,7 @@
             computed: {
                 searchedUsers() {
                     return this.users.filter((user) => {
-                            // return user.name.match(this.findUser)
+                            return user.name.match(this.findUser)
                         }
                     );
                 }

@@ -36,7 +36,7 @@
                         <li class="list-group-item text-center">@{{type.type}}</li>
                     </ul>
                     <div class="row justify-content-end mt-2">
-                        <div class="col-auto">
+                        <div class="col-auto m-0 ">
                             <span @click="removeType(type.id)" class="badge badge-danger">Delete</span>
                         </div>
                     </div>
@@ -45,11 +45,6 @@
         </div>
     </div>
 
-    {{--<div v-else="types = null" class="row justify-content-center">--}}
-    {{--<div class="col-auto">--}}
-    {{--<h4>Add some types</h4>--}}
-    {{--</div>--}}
-    {{--</div>--}}
 
 @endsection
 

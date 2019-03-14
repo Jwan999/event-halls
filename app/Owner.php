@@ -8,8 +8,4 @@ class Owner extends Model
 {
     protected $fillable = ["email", "phone", "name"];
 
-//    public function place()
-//    {
-//        return $this->belongsTo(Place::class);
-//    }
 }

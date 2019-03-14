@@ -25,7 +25,7 @@ class CreatePlacesTable extends Migration
             $table->integer('low_price');
             $table->text('description');
             $table->text('owner_id');
-//            $table->integer('user_id');
+//            $table->string('user_id');
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-
+//
 //        $mainAdmin = [
 //            "name" => "jwana",
 //            "password" => Hash::make("jwana")
