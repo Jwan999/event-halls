@@ -55,7 +55,7 @@ Route::group(["prefix" => "/api"], function () {
     Route::get('/admin', 'Admin\LoginController@adminJson');
 });
 
-Route::get('/home', 'UserSiteController@mainPageView');
+Route::get('/', 'UserSiteController@mainPageView');
 Route::get('/places/place/{id}', 'UserSiteController@placeView');
 
 //Route::group(["middleware" => "auth:user"], function () {
@@ -70,3 +70,7 @@ Route::get('/places/place/{id}', 'UserSiteController@placeView');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

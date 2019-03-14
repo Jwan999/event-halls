@@ -51,7 +51,7 @@
     <div class="mt-1 collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link text-light" href="/home">Home</a>
+                <a class="nav-link text-light" href="/">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" href="/favorites">Favorites</a>

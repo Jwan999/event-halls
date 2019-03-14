@@ -31,7 +31,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home/';
+    protected $redirectTo = '/';
 
 
     /**
@@ -63,7 +63,7 @@ class LoginController extends Controller
             $user = Socialite::driver($driver)->stateless()->user();
 //            dd($user);
         } catch (\Exception $e) {
-            dd($e);
+//            dd($e);
             return redirect()->route('login');
         }
 
@@ -84,7 +84,7 @@ class LoginController extends Controller
             auth()->login($newUser, true);
         }
 //        dd($this->redirectPath());
-        return redirect('/home');
+        return redirect('/');
     }
 
     public function findOrCreateUser($user, $provider)
@@ -103,7 +103,7 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        return redirect()->to('/home/');
+        return redirect()->to('/');
     }
 
     public function guard()

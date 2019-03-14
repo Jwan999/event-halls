@@ -46,7 +46,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <a class="nav-link nav-item text-white" href="/home">Main page</a>
+                        <a class="nav-link nav-item text-white" href="/">Main page</a>
                     </div>
                 </div>
                 <hr>
