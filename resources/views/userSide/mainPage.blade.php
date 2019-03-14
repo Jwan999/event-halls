@@ -11,6 +11,7 @@
 
     <title>Event halls</title>
     <style>
+
         body {
             overflow-x: hidden;
             font-family: 'Raleway', sans-serif;

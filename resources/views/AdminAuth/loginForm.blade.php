@@ -23,7 +23,6 @@
 <div class="row h-75 justify-content-center align-items-center">
     <div class="col-md-5">
         @include('layouts.errors')
-
         <div class="card zain-bg">
             <div class="card-body">
                 <div class="card">

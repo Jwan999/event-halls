@@ -21,8 +21,7 @@ Route::get('/admin/login', 'Admin\LoginController@showLoginForm')->name("login")
 Route::post('/admin/login', 'Admin\LoginController@login');
 Route::get('/admin/logout', 'Admin\LoginController@logout');
 
-//"middleware" => "auth:admin",
-Route::group(["prefix" => "/dashboard",], function () {
+Route::group(["middleware" => "auth:admin", "prefix" => "/dashboard",], function () {
     Route::get('/', 'DashboardController@openDashboard');
 
     Route::get('/places', 'PlaceController@showAllPlaces');

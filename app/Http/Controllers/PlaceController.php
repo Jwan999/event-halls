@@ -150,7 +150,7 @@ class PlaceController extends Controller
         ];
 
         self::savePlace($request, $rules);
-        return Response::redirectTo("/home");
+        return Response::redirectTo("/");
 
     }
 }
