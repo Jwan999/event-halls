@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="314a64dd-7140-4cb9-9f7e-264e8d24cd92" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/userSide/searchPage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/userSide/searchPage.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,14 +76,14 @@
           <entry key="env" value="110" />
           <entry key="example" value="41" />
           <entry key="html" value="1733" />
-          <entry key="php" value="31147" />
+          <entry key="php" value="31166" />
           <entry key="txt" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="151" />
-          <entry key="Blade" value="17797" />
+          <entry key="Blade" value="17816" />
           <entry key="HTML" value="1733" />
           <entry key="PHP" value="13350" />
           <entry key="PLAIN_TEXT" value="99" />
@@ -106,11 +105,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/userSide/searchPage.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="51" column="72" selection-start-line="51" selection-start-column="72" selection-end-line="51" selection-end-column="72" />
-              <folding>
-                <element signature="e#142#2334#0#HTML" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -422,7 +418,7 @@
       <workItem from="1552571048115" duration="4768000" />
       <workItem from="1552576415097" duration="4688000" />
       <workItem from="1552581234700" duration="3231000" />
-      <workItem from="1552586775146" duration="2679000" />
+      <workItem from="1552586775146" duration="3178000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1552407411010</created>
@@ -484,7 +480,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="363914000" />
+    <option name="totallyTimeSpent" value="364413000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -492,9 +488,9 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.25189108" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.25189108" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49924356" visible="true" weight="0.11230769" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49924356" visible="true" weight="0.16307692" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50075644" side_tool="true" weight="0.22923078" />
       <window_info anchor="bottom" id="Version Control" order="3" />
@@ -798,11 +794,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/userSide/searchPage.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="51" column="72" selection-start-line="51" selection-start-column="72" selection-end-line="51" selection-end-column="72" />
-          <folding>
-            <element signature="e#142#2334#0#HTML" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
         </state>
       </provider>
     </entry>

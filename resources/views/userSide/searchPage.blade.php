@@ -1,14 +1,15 @@
 @extends('userSide.mainPage')
 
 @section('content')
-    <div id="search" class="row ml-5">
+
+    {{--the search page --}}
+    <div id="search" class="row m-3">
         <div class="col">
             {{--search bar--}}
             <div class="row justify-content-start">
                 <div class="col-md-6 mt-4">
                     <div class="input-group">
-                        <input v-model="findPlace" type="text" class="form-control"
-                               placeholder="Look for a place or a location">
+                        <input v-model="findPlace" type="text" class="form-control" placeholder="Look for a place or a location">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button"
                                     data-toggle="dropdown"
@@ -42,57 +43,47 @@
                 </div>
 
             </div>
+            {{--places row--}}
+            <div class="row">
+                <div v-for="place in searchedPlaces" class="col-md-4 p-0 m-3">
+                    <div class="card ">
+                        <img :src="place.image" class="card-img-top image-size" alt="...">
+                        <div class="card-body">
 
-            {{--the search page --}}
-            <div class="container">
-                <div class="row m-3">
-                    <div class="col">
-                        {{--places row--}}
-                        <div class="row justify-content-start">
-                            <div v-for="place in places" class="col-md-5 p-0 m-3">
-                                <div class="card ">
-                                    <img :src="place.image" class="card-img-top image-size" alt="...">
-                                    <div class="card-body">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">
+                                    <h5><a :href="`/places/place/${place.id}`">@{{ place.place_name }}</a></h5>
+                                </div>
+                                <div class="col-auto">
+                                    <form action="/favorites/add" method="post">
+                                        @csrf
+                                        <button type="submit" class="round btn btn-outline-info btn-sm"><h5
+                                                    class="text-center m-0 p-0">+</h5></button>
+                                    </form>
+                                </div>
+                            </div>
 
-                                        <div class="row justify-content-between">
-                                            <div class="col-auto">
-                                                <h5><a :href="`/places/place/${place.id}`">@{{ place.place_name }}</a></h5>
-                                            </div>
-                                            <div class="col-auto">
-                                                <form action="/favorites/add" method="post">
-                                                    @csrf
-                                                    <button type="submit" class="round btn btn-outline-info btn-sm"><h5
-                                                                class="text-center m-0 p-0">+</h5></button>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="row m-0 p-0 justify-content-between">
-                                            <div class="col-12">
-                                                <small class="p-0 m-0">@{{ place.location }}</small>
-                                            </div>
-                                            <br>
-                                            <div class="col">
-                                                <small>Number of halls: 3</small>
-                                            </div>
-                                            <div class="row justify-content-end p-0 m-0">
-                                                <div class="col-auto">
-                                                    <small>@{{ place.low_price }}$-@{{ place.high_price }}$</small>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="row m-0 p-0 justify-content-between">
+                                <div class="col-12">
+                                    <small class="p-0 m-0">@{{ place.location }}</small>
+                                </div>
+                                <br>
+                                <div class="col">
+                                    <small>Number of halls: 3</small>
+                                </div>
+                                <div class="row justify-content-end p-0 m-0">
+                                    <div class="col-auto">
+                                        <small>@{{ place.low_price }}$-@{{ place.high_price }}$</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
 
-
         </div>
+
     </div>
 
 @endsection
@@ -140,13 +131,13 @@
                 this.getPlaces();
                 this.getTypes()
             }, computed: {
-                // searchedPlaces() {
-                //     return this.places.filter((place) => {
-                //             return place.place_name.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase())
-                //                 || place.location.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase());
-                //         }
-                //     );
-                // }
+                searchedPlaces() {
+                    return this.places.filter((place) => {
+                            return place.place_name.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase())
+                                || place.location.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase());
+                        }
+                    );
+                }
             }
         })
     </script>

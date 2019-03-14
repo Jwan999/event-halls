@@ -95,9 +95,9 @@
             computed: {
                 searchedPlaces() {
                     return this.places.filter((place) => {
-                            return place.place_name.match(this.findPlace)
-                                || place.type.match(this.findPlace)
-                                || place.location.match(this.findPlace);
+                            return place.place_name.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase())
+                                || place.location.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase())
+                                || place.type.toLocaleLowerCase().includes(this.findPlace)
                         }
                     );
                 }
