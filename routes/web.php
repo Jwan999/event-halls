@@ -59,13 +59,13 @@ Route::get('/', 'UserSiteController@mainPageView');
 Route::get('/places/place/{id}', 'UserSiteController@placeView');
 
 //Route::group(["middleware" => "auth:user"], function () {
-Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView')->middleware('auth:user');
-Route::post('/places/add/{owner}', 'PlaceController@savePlaceRedirectHome')->middleware('auth:user');
-Route::get('/favorites', 'FavoriteController@index')->middleware('auth:user');
-Route::get('/favorites/add', 'FavoriteController@store')->middleware('auth:user');
-Route::get('/owners/add', 'UserSiteController@showAddOwner')->middleware('auth:user');
-Route::post('/owners/add', 'OwnerController@addOwnerUserSite')->middleware('auth:user');
-Route::get('/book', 'BookController@index')->middleware('auth:user');
+Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView')->middleware(Auth::guard('user'));
+Route::post('/places/add/{owner}', 'PlaceController@savePlaceRedirectHome');
+Route::get('/favorites', 'FavoriteController@index');
+Route::get('/favorites/add', 'FavoriteController@store');
+Route::get('/owners/add', 'UserSiteController@showAddOwner');
+Route::post('/owners/add', 'OwnerController@addOwnerUserSite');
+Route::get('/book', 'BookController@index');
 //});
 
 
