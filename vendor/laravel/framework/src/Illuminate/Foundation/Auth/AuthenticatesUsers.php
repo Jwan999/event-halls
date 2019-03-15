@@ -30,6 +30,7 @@ trait AuthenticatesUsers
      */
     public function login(Request $request)
     {
+//        dd($request);
 
         $this->validateLogin($request);
 

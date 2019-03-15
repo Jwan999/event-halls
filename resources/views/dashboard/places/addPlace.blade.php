@@ -5,7 +5,7 @@
     <div class="row justify-content-start m-5">
         <div class="col-md-6">
             @include('layouts.errors')
-            <form action="/places/add" method="post" enctype="multipart/form-data">
+            <form action="/dashboard/places/add" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
