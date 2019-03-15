@@ -25,13 +25,13 @@ Route::group([ "prefix" => "/dashboard",], function () {
     Route::get('/', 'DashboardController@openDashboard');
 
     Route::get('/places', 'PlaceController@showAllPlaces');
-    Route::get('/places/add', 'PlaceController@showAddPlace');
     Route::get('/places/place/{id}', 'PlaceController@placeView');
     Route::delete('/places/{place}', 'PlaceController@delete');
     Route::get('/places/{place}', 'PlaceController@editView');
     Route::patch('/places/{place}/edit', 'PlaceController@edit');
-    Route::post('/places/add/{user}', 'PlaceController@addPlace');
-
+    Route::post('/places/add/{owner}', 'PlaceController@addPlace');
+    Route::get('/places/add/{owner}', 'PlaceController@showAddPlace');
+//    {user}
     Route::get('/owners/add', 'OwnerController@showAddOwnerView');
     Route::get('/owners', 'OwnerController@ownersView');
     Route::post('/owners/add', 'OwnerController@addOwner');

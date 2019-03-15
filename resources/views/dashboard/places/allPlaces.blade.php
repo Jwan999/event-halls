@@ -25,7 +25,7 @@
                             <th scope="col">Location</th>
                             <th scope="col">Hall</th>
                             <th scope="col">
-                                <a href="/dashboard/places/add"><h4 class="text-center p-0 m-0">+</h4></a>
+                                <a href="/dashboard/owners/add"><h4 class="text-center p-0 m-0">+</h4></a>
                             </th>
 
                         </tr>

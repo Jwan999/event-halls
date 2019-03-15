@@ -22,8 +22,8 @@ class OwnerController extends Controller
             "phone" => "integer",
             "name" => "required"
         ];
-        self::saveOwners($request, $rules);
-        return Response::redirectTo('/dashboard/owners');
+        $owner = self::saveOwners($request, $rules);
+        return Response::redirectTo('/dashboard/places/add' . $owner->id);
     }
 
 //function that saves the owner
