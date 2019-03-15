@@ -11,7 +11,6 @@
                         <li class="list-group-item zain-bg text-white">Owners contacts
                             {{--<a href="/dashboard/owners/add"><h5 class="text-white">+</h5></a>--}}
                         </li>
-
                         <li v-for="owner in owners" class="list-group-item"> @{{ owner.email }}<br>
                             <smaill> @{{ owner.phone }}</smaill>
                         </li>
