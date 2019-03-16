@@ -13,6 +13,11 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
+//    public function __construct()
+//    {
+//        $this->middleware('auth:admin');
+//    }
+
     public function guard()
     {
         return Auth::guard('admin');

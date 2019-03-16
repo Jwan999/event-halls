@@ -42,13 +42,12 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
     }
 
     public function redirectToProvider($driver, Request $request)
     {
-
         return Socialite::driver($driver)->redirect();
-//        dd($smth);
     }
 
     /**

@@ -1,5 +1,8 @@
 <?php
 
+use App\Admin;
+use App\User;
+
 return [
 
     /*
@@ -46,10 +49,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-//        'admin' => [
-//            'driver' => 'session',
-//            'provider' => 'admins',
-//        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
         'user' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -81,13 +84,13 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => User::class,
         ],
 
-//        'admins' => [
-//            'driver' => 'eloquent',
-//            'model' => App\Admin::class,
-//        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => Admin::class,
+        ],
 
 //         'users' => [
 //             'driver' => 'database',

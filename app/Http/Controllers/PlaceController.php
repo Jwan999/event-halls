@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Response;
 
 class PlaceController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('auth:user');
+//    }
+
     public function placeViewJson($id)
     {
         $place = Place::find($id);

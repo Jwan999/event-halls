@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form action="/admin/login" method="post">
-                            @csrf
+                            {{--@csrf--}}
                             <div class="form-group">
                                 <input name="name" type="text" class="form-control"
                                        placeholder="Username">

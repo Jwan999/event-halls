@@ -20,8 +20,8 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::get('/admin/login', 'Admin\LoginController@showLoginForm')->name("login");
 Route::post('/admin/login', 'Admin\LoginController@login');
 Route::get('/admin/logout', 'Admin\LoginController@logout');
-//"middleware" => "auth:admin",
-Route::group([ "prefix" => "/dashboard",], function () {
+
+Route::group(["prefix" => "/dashboard",], function () {
     Route::get('/', 'DashboardController@openDashboard');
 
     Route::get('/places', 'PlaceController@showAllPlaces');
@@ -59,7 +59,7 @@ Route::get('/', 'UserSiteController@mainPageView');
 Route::get('/places/place/{id}', 'UserSiteController@placeView');
 
 //Route::group(["middleware" => "auth:user"], function () {
-Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView')->middleware('auth:user');
+Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView');
 Route::post('/places/add/{owner}', 'PlaceController@savePlaceRedirectHome');
 Route::get('/favorites', 'FavoriteController@index');
 Route::get('/favorites/add', 'FavoriteController@store');
