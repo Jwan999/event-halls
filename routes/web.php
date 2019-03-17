@@ -65,6 +65,8 @@ Route::get('/favorites', 'FavoriteController@index');
 Route::get('/favorites/add', 'FavoriteController@store');
 Route::get('/owners/add', 'UserSiteController@showAddOwner');
 Route::post('/owners/add', 'OwnerController@addOwnerUserSite');
+Route::post('/favorites/add/{place}/{user}', 'FavoriteController@store');
+
 Route::get('/book', 'BookController@index');
 //});
 

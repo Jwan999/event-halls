@@ -9,9 +9,15 @@ use Illuminate\Http\Request;
 use Socialite;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class LoginController extends Controller
 {
+
+    use HasRoles;
+    protected $guard_name = 'user';
+
 
     /*
     |--------------------------------------------------------------------------

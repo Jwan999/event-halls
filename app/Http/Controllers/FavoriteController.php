@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use \App\User;
-use \App\Place;
+use App\Favorite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+
 
 class FavoriteController extends Controller
 {
@@ -18,13 +19,13 @@ class FavoriteController extends Controller
         return view('userSide.favoritePage');
     }
 
-    public function placesWithUsers(User $user, Place $place)
-    {
-        $place = Place::find($place);
-        $user = User::find($user);
-        $user->places()->sync($place);
-        dd($user->places);
-    }
+//    public function placesWithUsers(User $user, Place $place)
+//    {
+//        $place = Place::find($place);
+//        $user = User::find($user);
+//        $user->places()->sync($place);
+//        dd($user->places);
+//    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +34,6 @@ class FavoriteController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -42,11 +42,22 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user, Place $place)
+    public function store(Request $request, $placeId, $userId)
     {
-        $favorite = User::find($user);
-        $favorite->places()->sync($place);
-
+        $rules = [
+            "liked" => "boolean"
+        ];
+        $data = $this->validate($request, $rules);
+        $data["liked"] = true;
+        $data["user_id"] = $userId;
+        $data["place_id"] = $placeId;
+//        dd($data);
+        $favorite = Favorite::create($data);
+        $response = [
+            "success" => true,
+            "favorite" => $favorite
+        ];
+//        return Response::json($response);
     }
 
     /**

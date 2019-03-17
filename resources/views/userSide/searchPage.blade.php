@@ -9,7 +9,8 @@
             <div class="row justify-content-start">
                 <div class="col-md-6 mt-4">
                     <div class="input-group">
-                        <input v-model="findPlace" type="text" class="form-control" placeholder="Look for a place or a location">
+                        <input v-model="findPlace" type="text" class="form-control"
+                               placeholder="Look for a place or a location">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button"
                                     data-toggle="dropdown"
@@ -55,14 +56,17 @@
                                     <h5><a :href="`/places/place/${place.id}`">@{{ place.place_name }}</a></h5>
                                 </div>
                                 <div class="col-auto">
-                                    <form action="/favorites/add" method="post">
-                                        @csrf
-                                        <button type="submit" class="round btn btn-outline-info btn-sm"><h5
-                                                    class="text-center m-0 p-0">+</h5></button>
-                                    </form>
+                                    {{--hello--}}
+                                    {{--<div v-for="user in users">--}}
+                                    {{--<h4>@{{ user.id }}</h4>--}}
+                                    {{--</div>--}}
+
+                                    <button name="liked" @click="liked(place.id)" type="submit"
+                                            class="round btn btn-outline-info btn-sm"
+                                            v-bind:class="{active : isLiked}"><h5
+                                                class="text-center m-0 p-0">+</h5></button>
                                 </div>
                             </div>
-
                             <div class="row m-0 p-0 justify-content-between">
                                 <div class="col-12">
                                     <small class="p-0 m-0">@{{ place.location }}</small>
@@ -81,11 +85,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 @endsection
 
 @push('scripts')
@@ -93,16 +94,19 @@
         let vue = new Vue({
             el: "#search",
             data: {
+
                 place: {
                     place_name: "",
                     location: "",
                 },
                 findPlace: "",
                 places: {},
-                // isShown: true,
                 types: [],
                 selectedType: null,
-                selectedSort: null
+                selectedSort: null,
+                isLiked: null,
+                // users: [],
+                // likes: [],
             },
             methods: {
                 getPlaces(sort, type) {
@@ -123,21 +127,42 @@
                         this.types = response.data.types
                     })
                 },
-                // showFav(){
-                // isShown =!isShown;
-                // }
+                // getUsers() {
+                //     axios.get("/api/users").then(response => {
+                //         this.users = response.data.users;
+                //     })
+                // },
+                liked(placeId) {
+
+                    let liked = new FormData;
+                    liked.append("isLiked", this.isLiked = true);
+
+                    axios.post(`/favorites/add/${placeId}/1`, {
+                        params: {
+                            liked: this.isLiked
+                        }
+                    }).then(response => {
+                        alert('haha')
+                        // if (response.data.success) {
+                        //     alert("Post created successfully");
+                        //     this.likes.push(response.data.likes);
+                        // }
+                    })
+                }
             },
             mounted() {
+                // this.getUsers();
                 this.getPlaces();
                 this.getTypes()
-            }, computed: {
+            },
+            computed: {
                 searchedPlaces() {
                     return this.places.filter((place) => {
                             return place.place_name.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase())
                                 || place.location.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase());
                         }
                     );
-                }
+                },
             }
         })
     </script>

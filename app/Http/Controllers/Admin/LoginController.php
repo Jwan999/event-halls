@@ -7,7 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-
+//use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Spatie\Permission\Traits\HasRoles;
+//
+//class User extends Authenticatable
+//{
+//    use HasRoles;
+//
+//    protected $guard_name = 'admin';
+//}
 
 class LoginController extends Controller
 {
