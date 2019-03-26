@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace EventHalls\Http\Controllers;
 
-use App\Place;
+use EventHalls\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 

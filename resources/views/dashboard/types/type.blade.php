@@ -64,7 +64,8 @@
                 },
                 removeType(id) {
                     axios.delete(`/dashboard/types/${id}`).then(response => {
-                        window.loaction.reload()
+                        console.log(response);
+                        this.getTypes()
                     })
                 }
             },

@@ -5,8 +5,11 @@
     <div class="row justify-content-start m-5">
         <div class="col-md-6">
             @include('layouts.errors')
-            <form action="/dashboard/places/add/" method="post" enctype="multipart/form-data">
+            <form action=`/dashboard/places/add/{{$owner->id}}` method="post" enctype="multipart/form-data">
                 @csrf
+                <div class="form-group">
+                    <input name="owner_id" type="hidden" class="form-control hidden" value="{{$owner->id}}">
+                </div>
                 <div class="form-group">
                     <input name="place_name" type="text" class="form-control" placeholder="Place name">
                 </div>

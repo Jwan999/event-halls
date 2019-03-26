@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace EventHalls\Http\Controllers;
 
-use \App\Type;
+use \EventHalls\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -38,7 +38,7 @@ class TypeController extends Controller
     public function delete(Type $type){
 
         $type->delete();
-        return Response::redirectTo('/dashboard/types');
+        return Response::json('/dashboard/types');
     }
 
 

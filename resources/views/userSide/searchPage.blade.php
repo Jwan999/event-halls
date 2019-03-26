@@ -1,52 +1,34 @@
 @extends('userSide.mainPage')
 
 @section('content')
+    <div id="search">
 
-    {{--the search page --}}
-    <div id="search" class="row m-3">
-        <div class="col">
-            {{--search bar--}}
-            <div class="row justify-content-start">
-                <div class="col-md-6 mt-4">
-                    <div class="input-group">
-                        <input v-model="findPlace" type="text" class="form-control"
-                               placeholder="Look for a place or a location">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Sort
-                            </button>
-                            <div class="dropdown-menu">
-                                <a @click="getPlaces(null,selectedType)" class="dropdown-item"
-                                   href="#">All prices</a>
-                                <a @click="getPlaces('asc',selectedType)" class="dropdown-item" href="#">Price from low
-                                    to
-                                    high</a>
-                                <a @click="getPlaces('desc',selectedType)" class="dropdown-item" href="#">Price from
-                                    high to
-                                    low</a>
-                            </div>
-
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">Type
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" @click="getPlaces(selectedSort,null)" href="">All</a>
-                                    <a v-for="type in types" @click="getPlaces(selectedSort,type.type)"
-                                       class="dropdown-item">@{{ type.type }}</a>
-
-                                </div>
+        <div class="card img">
+            @include("userSide.myNavbar")
+            <div class="card-body">
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-8">
+                        <div class="card light mt-3">
+                            <div class="card-body">
+                                <input v-model="findPlace" type="text" class="form-control"
+                                       placeholder="Look for a place or a location">
+                                <h4 class="text-dark mt-2">Sort according to</h4>
+                                <span @click="getPlaces(null,selectedType)" class="badge badge-info">All places</span>
+                                <span @click="getPlaces('asc',selectedType)" class="badge badge-info">lowest</span>
+                                <span @click="getPlaces('desc',selectedType)" class="badge badge-info">Highest</span>
+                                <span @click="getPlaces(selectedSort,null)" class="badge badge-info">All types</span>
+                                <span v-for="type in types" @click="getPlaces(selectedSort,type.type)"
+                                      class="badge badge-info">@{{ type.type }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-            {{--places row--}}
-            <div class="row">
-                <div v-for="place in searchedPlaces" class="col-md-4 p-0 m-3">
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div v-for="place in searchedPlaces" class="col-md-4 col-12 mt-4">
                     <div class="card ">
                         <img :src="place.image" class="card-img-top image-size" alt="...">
                         <div class="card-body">
@@ -55,17 +37,12 @@
                                 <div class="col-auto">
                                     <h5><a :href="`/places/place/${place.id}`">@{{ place.place_name }}</a></h5>
                                 </div>
-                                <div class="col-auto">
-                                    {{--hello--}}
-                                    {{--<div v-for="user in users">--}}
-                                    {{--<h4>@{{ user.id }}</h4>--}}
-                                    {{--</div>--}}
-
-                                    <button name="liked" @click="liked(place.id)" type="submit"
-                                            class="round btn btn-outline-info btn-sm"
-                                            v-bind:class="{active : isLiked}"><h5
-                                                class="text-center m-0 p-0">+</h5></button>
-                                </div>
+                                {{--<div class="col-auto">--}}
+                                {{--<button  name="liked" @click="liked(place.id)" type="submit"--}}
+                                {{--class="round btn btn-outline-info btn-sm"--}}
+                                {{--v-bind:class="{active : isLiked}"><h5--}}
+                                {{--class="text-center m-0 p-0">+</h5></button>--}}
+                                {{--</div>--}}
                             </div>
                             <div class="row m-0 p-0 justify-content-between">
                                 <div class="col-12">
@@ -87,6 +64,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @push('scripts')
@@ -94,7 +72,6 @@
         let vue = new Vue({
             el: "#search",
             data: {
-
                 place: {
                     place_name: "",
                     location: "",
@@ -104,9 +81,9 @@
                 types: [],
                 selectedType: null,
                 selectedSort: null,
-                isLiked: null,
-                // users: [],
+                isLiked: false,
                 // likes: [],
+                // userId: "",
             },
             methods: {
                 getPlaces(sort, type) {
@@ -118,8 +95,8 @@
                             type: type,
                         }
                     }).then(response => {
-                        // console.log(response.data);
                         this.places = response.data.places
+
                     })
                 },
                 getTypes() {
@@ -127,31 +104,34 @@
                         this.types = response.data.types
                     })
                 },
-                // getUsers() {
-                //     axios.get("/api/users").then(response => {
-                //         this.users = response.data.users;
+                // getUser() {
+                //     axios.get('/api/user').then(response => {
+                //         this.userId = response.data.user
                 //     })
                 // },
                 liked(placeId) {
-
                     let liked = new FormData;
                     liked.append("isLiked", this.isLiked = true);
-
-                    axios.post(`/favorites/add/${placeId}/1`, {
+                    axios.post(`/favorites/add/${placeId}`, {
                         params: {
                             liked: this.isLiked
                         }
                     }).then(response => {
-                        alert('haha')
-                        // if (response.data.success) {
-                        //     alert("Post created successfully");
-                        //     this.likes.push(response.data.likes);
-                        // }
                     })
                 }
             },
+            // getFavorites() {
+            //     let liked = new FormData;
+            //     axios.get('/api/favorites',).then(response => {
+            //         this.likes = response.data.favorites
+            //     }).then(response=>{
+            //         liked.append("isLiked", this.isLiked = true);
+            //
+            //     })
+            // },
+
             mounted() {
-                // this.getUsers();
+                // this.getFavorites();
                 this.getPlaces();
                 this.getTypes()
             },

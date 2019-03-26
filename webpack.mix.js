@@ -12,4 +12,24 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css');
+
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const DashboardPlugin = require('src/plugins/blackDashboard');
+
+module.exports = {
+    module: {
+        rules: [
+            // ... other rules
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            }
+        ]
+    },
+    plugins: [
+        // make sure to include the plugin!
+        new VueLoaderPlugin(),
+        new DashboardPlugin()
+    ]
+}

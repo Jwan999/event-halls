@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace EventHalls\Http\Controllers\Auth;
 
-use \App\User;
-use App\Http\Controllers\Controller;
+use \EventHalls\User;
+use EventHalls\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Socialite;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -14,10 +15,8 @@ use Spatie\Permission\Traits\HasRoles;
 
 class LoginController extends Controller
 {
-
     use HasRoles;
     protected $guard_name = 'user';
-
 
     /*
     |--------------------------------------------------------------------------
@@ -51,9 +50,9 @@ class LoginController extends Controller
 
     }
 
-    public function redirectToProvider($driver, Request $request)
+    public function redirectToProvider(Request $request)
     {
-        return Socialite::driver($driver)->redirect();
+        return Socialite::driver("google")->redirect();
     }
 
     /**
@@ -61,21 +60,26 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback($driver)
+    public function handleProviderCallback(Request $request)
     {
-//        dd($driver);
+
+        $driver = "google";
         try {
-            $user = Socialite::driver($driver)->stateless()->user();
-//            dd($user);
+            $state = $request->get('state');
+            $request->session()->put('state', $state);
+
+            if (\Auth::check() == false) {
+                session()->regenerate();
+            }
+            $user = Socialite::driver($driver)->user();
         } catch (\Exception $e) {
-//            dd($e);
             return redirect()->route('login');
         }
-
         $existingUser = User::where('email', $user->getEmail())->first();
 
         if ($existingUser) {
-            auth()->login($existingUser, true);
+            Auth::login($existingUser, true);
+            //auth()->login($existingUser, true);
         } else {
             $newUser = new User;
             $newUser->provider = $driver;
@@ -85,8 +89,9 @@ class LoginController extends Controller
             $newUser->avatar = $user->getAvatar();
             $newUser->save();
 
-            auth()->login($newUser, true);
+            Auth::login($newUser, true);
         }
+//        $userId = auth()->user()->id;
         return redirect('/');
     }
 
@@ -117,6 +122,12 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return Socialite::driver('google')->redirect();
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 
 }

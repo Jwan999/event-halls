@@ -1,8 +1,5 @@
 <?php
 
-use App\Admin;
-use App\User;
-
 return [
 
     /*
@@ -20,12 +17,12 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-
     'socialite' => [
         'drivers' => [
             'google',
         ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -49,18 +46,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
         'user' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+            'hash' => false,
         ],
     ],
 
@@ -84,18 +77,13 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => User::class,
+            'model' => EventHalls\User::class,
         ],
 
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => Admin::class,
-        ],
-
-//         'users' => [
-//             'driver' => 'database',
-//             'table' => 'users',
-//         ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*

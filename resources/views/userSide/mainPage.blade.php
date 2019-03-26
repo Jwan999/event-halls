@@ -11,68 +11,35 @@
 
     <title>Event halls</title>
     <style>
-
         body {
             overflow-x: hidden;
             font-family: 'Raleway', sans-serif;
-
         }
-
         .zain-bg {
             background: linear-gradient(to bottom right, #6e4f90 0%, #5561AB 100%)
         }
-
         .faded {
             opacity: 0.8;
         }
-
         .image-size {
             height: 25vh;
             object-fit: cover;
         }
-
         .color {
             color: white;
         }
-
         .round {
             border-radius: 50px 50px;
         }
+        .img{
+            background-image: url("/eventsPic.jpg");
+            background-size: 100%;
+        }
+
     </style>
 </head>
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-lg zain-bg navbar-dark ">
-    <a class="navbar-brand text-light" href="#">Events hall</a>
-    <button class="navbar-toggler color" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="mt-1 collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="/favorites">Favorites</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="/owners/add">Add place</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="/dashboard/">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="/about/">About</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <a href="/redirect/google"
-               class="text-white">{{ __('Sign in') }}</a>
-        </form>
-    </div>
-</nav>
 
 
 @yield('content')
@@ -93,4 +60,4 @@
 
 @stack('scripts')
 </body>
-</html>
+</html

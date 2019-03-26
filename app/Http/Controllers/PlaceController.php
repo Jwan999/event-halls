@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace EventHalls\Http\Controllers;
 
-use App\Owner;
-use \App\Place;
-use App\User;
+use EventHalls\Owner;
+use \EventHalls\Place;
+use EventHalls\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -66,7 +66,7 @@ class PlaceController extends Controller
     public function delete(Place $place)
     {
         $place->delete();
-        return Response::redirectTo('/dashboard/places');
+        return Response::json('/dashboard/places');
     }
 
     public function editView(Place $place)
@@ -107,15 +107,15 @@ class PlaceController extends Controller
         return view('dashboard.places.addPlace');
     }
 
-    // creating and adding a place to the database
+    // adding a place from the dashboard
     public function addPlace(Request $request)
     {
         $rules = [
             "place_name" => "required",
             "type" => "required",
+            'owner_id' => 'required',
             "image" => "required|image",
-            "hall_name" => "required",
-            "location" => "required",
+              "location" => "required",
             "hall_max" => "required",
             "low_price" => "required",
             "high_price" => "required",
@@ -123,8 +123,7 @@ class PlaceController extends Controller
         ];
 
         self::savePlace($request, $rules);
-
-        return Response::redirectTo("/places");
+        return Response::redirectTo("/dashboard/places");
     }
 
 
@@ -144,7 +143,7 @@ class PlaceController extends Controller
         $rules = [
             "place_name" => "required",
             "type" => "required",
-            'owner_id' => 'required',
+            "owner_id" => "required",
             "image" => "required|image",
             "hall_name" => "required",
             "location" => "required",

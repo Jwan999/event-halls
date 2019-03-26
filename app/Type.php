@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace EventHalls;
 
 use Illuminate\Database\Eloquent\Model;
 

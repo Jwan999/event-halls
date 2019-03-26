@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace EventHalls\Http\Controllers;
 
-use App\Owner;
+use EventHalls\Owner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -23,7 +23,7 @@ class OwnerController extends Controller
             "name" => "required"
         ];
         $owner = self::saveOwners($request, $rules);
-        return Response::redirectTo('/dashboard/places/add' . $owner->id);
+        return Response::redirectTo('/dashboard/places/add/' . $owner->id);
     }
 
 //function that saves the owner

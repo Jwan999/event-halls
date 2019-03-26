@@ -1,56 +1,59 @@
 @extends('layouts.master')
 
 @section('content')
-
-
-    <div id="app" class="row">
-        <div class="col">
-            {{--search bar--}}
-            <div class="row justify-content-center mt-5 mb-2">
-                <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <input v-model="findPlace" type="text" class="form-control"
-                               placeholder="Enter a place name or type">
+    <div id="app" class="row justify-content-center mt-1">
+        <div class="col-md-11">
+            <div class="card zain-light-bg">
+                <div class="row justify-content-between m-3">
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-zoom-split text-dark"></i>
+                                </div>
+                            </div>
+                            <input v-model="findPlace" type="email" class="form-control"
+                                   placeholder="Enter a place name type or location">
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button href="/dashboard/owners/add" type="button" rel="tooltip"
+                                class="btn btn-link btn-sm">
+                            <i class="tim-icons icon-simple-add m-0 pt-3"></i>
+                        </button>
                     </div>
                 </div>
-            </div>
-            {{--places table--}}
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <table class="table table-borderless">
-                        <thead class="bg-dark text-white">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <th scope="col">Place name</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Hall</th>
-                            <th scope="col">
-                                <a href="/dashboard/owners/add"><h4 class="text-center p-0 m-0">+</h4></a>
-                            </th>
-
+                            <th class=" text-dark">place name</th>
+                            <th class=" text-dark">type</th>
+                            <th class=" text-dark">location</th>
+                            <th class=" text-dark">actions</th>
                         </tr>
                         </thead>
-
-                        <tbody class="bg-white">
+                        <tbody>
                         <tr v-for="place in searchedPlaces">
-                            <td><a :href="`/dashboard/places/${place.id}`">@{{place.place_name}}</a></td>
-                            <td>@{{place.type}}</td>
-                            <td>@{{place.location}}</td>
-                            <td>@{{place.hall_name}} @{{place.hall_max}}</td>
-                            <td>
-                                <div class="row">
-                                    <div class="col m-0 p-0">
-                                        <a @click="removePlace(place.id)" href='' class="badge badge-danger">Delete</a>
-                                    </div>
-                                    <div class="col m-0 p-0">
-                                        <a :href=`/dashboard/places/${place.id}` class="badge badge-info">Edit</a>
-                                    </div>
-                                </div>
+                            <td class=" text-dark">
+                                <a class="text-dark" :href="`/dashboard/places/${place.id}`">@{{place.place_name}}</a>
+                            </td>
+                            <td class=" text-dark">@{{place.type}}</td>
+                            <td class=" text-dark">@{{place.location}}</td>
+                            <td class="td-actions ">
+                                <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
+                                    <i :href=`/dashboard/places/${place.id}`
+                                       class="tim-icons icon-settings text-dark"></i>
+                                </button>
+                                <button @click="removePlace(place.id)" type="button" rel="tooltip"
+                                        class="btn btn-danger btn-link btn-icon btn-sm">
+                                    <i class="tim-icons icon-simple-remove text-dark"></i>
+                                </button>
                             </td>
                         </tr>
-
                         </tbody>
                     </table>
+
                 </div>
             </div>
 

@@ -11,17 +11,17 @@
 |
 */
 
-Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')
-    ->name('login.provider');
-Route::get('{driver}/callback', 'Auth\LoginController@handleProviderCallback')
+Route::get('redirect/google', 'Auth\LoginController@redirectToProvider')
+    ->name('login');
+Route::get('google/callback', 'Auth\LoginController@handleProviderCallback')
     ->name('login.callback');
-Route::get('logout', 'Auth\LoginController@logout');
+Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/admin/login', 'Admin\LoginController@showLoginForm')->name("login");
-Route::post('/admin/login', 'Admin\LoginController@login');
-Route::get('/admin/logout', 'Admin\LoginController@logout');
+//Route::get('/admin/login', 'Admin\LoginController@showLoginForm')->name("login");
+//Route::post('/admin/login', 'Admin\LoginController@login');
+//Route::get('/admin/logout', 'Admin\LoginController@logout');
 
-Route::group(["prefix" => "/dashboard",], function () {
+Route::group([ "prefix" => "/dashboard",], function () {
     Route::get('/', 'DashboardController@openDashboard');
 
     Route::get('/places', 'PlaceController@showAllPlaces');
@@ -41,7 +41,6 @@ Route::group(["prefix" => "/dashboard",], function () {
     Route::delete('/types/{type}', 'TypeController@delete');
 
     Route::get('/users', 'UserController@index');
-
 });
 
 Route::group(["prefix" => "/api"], function () {
@@ -49,24 +48,24 @@ Route::group(["prefix" => "/api"], function () {
     Route::get('/places', 'PlaceController@showAllPlacesJson');
     Route::get('/types', 'TypeController@showPlaceTypes');
     Route::get('/types/all', 'TypeController@showPlaceTypes');
-
+    Route::get('/favorites', 'FavoriteController@getFavorites');
     Route::get('/places/place/{id}', 'PlaceController@placeViewJson');
     Route::get('/users', 'UserController@usersJson');
     Route::get('/admin', 'Admin\LoginController@adminJson');
 });
 
 Route::get('/', 'UserSiteController@mainPageView');
+Route::get('/{id}', 'UserSiteController@mainPageView');
 Route::get('/places/place/{id}', 'UserSiteController@placeView');
 
 //Route::group(["middleware" => "auth:user"], function () {
 Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView');
 Route::post('/places/add/{owner}', 'PlaceController@savePlaceRedirectHome');
 Route::get('/favorites', 'FavoriteController@index');
-Route::get('/favorites/add', 'FavoriteController@store');
 Route::get('/owners/add', 'UserSiteController@showAddOwner');
 Route::post('/owners/add', 'OwnerController@addOwnerUserSite');
-Route::post('/favorites/add/{place}/{user}', 'FavoriteController@store');
-
+Route::post('/favorites/add/{place}', 'FavoriteController@store');
+//Route::get('/api/user','UserSiteController@currentUser');
 Route::get('/book', 'BookController@index');
 //});
 
@@ -74,3 +73,14 @@ Route::get('/book', 'BookController@index');
 //Auth::routes();
 //
 //Route::get('/home', 'HomeController@index')->name('home');
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');
+//
+//Route::group(['middleware' => 'auth'], function () {
+//	Route::resource('user', 'UserController', ['except' => ['show']]);
+//	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+//	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+//	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+//});
+

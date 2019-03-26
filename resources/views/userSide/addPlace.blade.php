@@ -92,10 +92,10 @@
                 },
                 getOwner() {
 
-                    // this.owner = window.location.pathname.split("/").pop();
+                    this.owner = window.location.pathname.split("/").pop();
 
-                    // console.log(owner);
-                    // this.getPlace(id);
+                    console.log(owner);
+                    this.getPlace(id);
                 }
             },
             mounted() {
