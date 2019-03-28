@@ -44,9 +44,8 @@
                             <td class="dark-text"><a class="text-dark">@{{place.type}}</a></td>
                             <td class="dark-text"><a class="text-dark">@{{place.location}}</a></td>
                             <td class="td-actions ">
-                                <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
-                                    <i :href=`/dashboard/places/${place.id}`
-                                       class="tim-icons icon-settings text-dark"></i>
+                                <button  type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
+                                   <a :href=`/dashboard/places/${place.id}/edit`> <i class="tim-icons icon-settings text-dark"></i></a>
                                 </button>
                                 <button @click="removePlace(place.id)" type="button" rel="tooltip"
                                         class="btn btn-danger btn-link btn-icon btn-sm">

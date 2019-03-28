@@ -28,7 +28,7 @@ Route::group(["prefix" => "/dashboard",], function () {
     Route::get('/places', 'PlaceController@showAllPlaces')->middleware('auth:admin');
     Route::get('/places/place/{id}', 'PlaceController@placeView')->middleware('auth:admin');
     Route::delete('/places/{place}', 'PlaceController@delete')->middleware('auth:admin');
-    Route::get('/places/{place}', 'PlaceController@editView')->middleware('auth:admin');
+    Route::get('/places/{place}/edit', 'PlaceController@editView')->middleware('auth:admin');
     Route::patch('/places/{place}/edit', 'PlaceController@edit')->middleware('auth:admin');
     Route::post('/places/add/{owner}', 'PlaceController@addPlace')->middleware('auth:admin');
     Route::get('/places/add/{owner}', 'PlaceController@showAddPlace')->middleware('auth:admin');

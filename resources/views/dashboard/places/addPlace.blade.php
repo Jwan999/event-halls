@@ -16,7 +16,8 @@
                             <div class="col-md-10">
 
                                 <div class="form-group">
-                                    <input name="owner_id" type="hidden" class="form-control hidden" value="{{$owner->id}}">
+                                    <input name="owner_id" type="hidden" class="form-control hidden"
+                                           value="{{$owner->id}}">
                                 </div>
 
                                 <div class="form-group">
@@ -32,13 +33,15 @@
 
                                 <div class="form-group">
                                     <div class="custom-file">
-                                        <input name="image" type="file" class="custom-file-input" id="validatedCustomFile">
+                                        <input name="image" type="file" class="custom-file-input"
+                                               id="validatedCustomFile">
                                         <label class="custom-file-label text-dark">Choose file...</label>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <input name="location" type="text" class="form-control text-dark" placeholder="Location">
+                                    <input name="location" type="text" class="form-control text-dark"
+                                           placeholder="Location">
                                 </div>
 
                                 <div class="form-group">
