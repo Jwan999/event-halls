@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scrollbar" id="style-10">
 
 <head>
 
@@ -10,10 +10,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-
     <!-- Custom fonts for this template -->
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 {{--<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'--}}
 {{--type='text/css'>--}}
 <!-- Custom styles for this template -->
@@ -21,6 +18,7 @@
     <link href="/../assets/css/nucleo-icons.css" rel="stylesheet"/>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -68,20 +66,10 @@
 
         }
 
-        /*.img {*/
-        /*background-image: url("/eventpic.png");*/
-        /*background-size: 100%;*/
-        /*height: 60vh;*/
-        /*}*/
-
         #mainNav .navbar-brand {
             font-size: 35px;
             color: white;
             font-family: 'Kaushan Script', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-        }
-
-        .opacity {
-            /*opacity: 0.8;*/
         }
 
         header.masthead .intro-text {
@@ -101,6 +89,42 @@
             color: white;
             font-family: 'Raleway', sans-serif;
         }
+
+        .scrollbar {
+            /*margin-left: 30px;*/
+            float: left;
+            height: 480px;
+            width: 100%;
+            /*background: #F5F5F5;*/
+            overflow-y: scroll;
+            margin-bottom: 25px;
+        }
+
+        #style-10::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+            border-radius: 10px;
+        }
+
+        #style-10::-webkit-scrollbar {
+            width: 10px;
+            background-color: #F5F5F5;
+        }
+
+        #style-10::-webkit-scrollbar-thumb {
+            background-color: #AAA;
+            border-radius: 10px;
+            background-image: -webkit-linear-gradient(90deg,
+            rgba(0, 0, 0, .2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(0, 0, 0, .2) 50%,
+            rgba(0, 0, 0, .2) 75%,
+            transparent 75%,
+            transparent)
+        }
+
+
     </style>
 
 </head>
@@ -110,7 +134,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger purple" href="#page-top">Event halls</a>
+            <a class="navbar-brand js-scroll-trigger purple">Event halls</a>
             <button class="navbar-toggler navbar-toggler-right zain-bg" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation ">
@@ -123,7 +147,7 @@
                         <a class="nav-link text-white" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/favorites">Favorites</a>
+                        <a class="nav-link text-white" href="/favorites/user">Favorites</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/owners/add">Add place</a>
@@ -153,15 +177,16 @@
 
     <!-- Header -->
     <header class="masthead">
-        <div class="container-fluid ">
-            <div class="intro-text">
+        <section class="text-center">
+            <div class="container mt-4">
 
-                <div class="row justify-content-center align-items-center h-smth">
-                    <div class="col-md-5 col-3 p-0">
-                        <input v-model="findPlace" type="text" class="form-control mt-4"
+                <div class="row justify-content-center my-2">
+                    <div class="col-md-5 col-6">
+                        <input v-model="findPlace" type="text" class="form-control my-0 mt-4"
                                placeholder="Look for a place or a location">
+
                     </div>
-                    <div class="col-md-1 col-3">
+                    <div class="col-md-3 col-6">
                         <div class="d-flex">
                             <div class="dropdown mr-1 mt-4">
                                 <button type="button" class="btn zain-light-bg btn-outline-secondary dropdown-toggle"
@@ -176,7 +201,7 @@
                                     <a @click="getPlaces('desc',selectedType)" class="dropdown-item">Highest</a>
                                 </div>
                             </div>
-                            <div class="dropdown mr-1 mt-4">
+                            <div class="dropdown mt-4">
                                 <button type="button" class="btn zain-light-bg btn-outline-secondary dropdown-toggle"
                                         id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false" data-offset="10,20">
@@ -192,8 +217,21 @@
 
                     </div>
                 </div>
+
             </div>
-        </div>
+        </section>
+
+
+        {{--<div class="intro-text">--}}
+            {{--<div class="row justify-content-center align-items-center h-smth">--}}
+                {{--<div class="col-md-5 col-3 p-0">--}}
+
+                {{--</div>--}}
+                {{--<div class="col-md-1 col-3">--}}
+
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </header>
 
     <div class="container">
@@ -201,7 +239,7 @@
         <div class="row justify-content-center">
             <div v-for="place in searchedPlaces" class="col-md-4 col-12 mt-4">
                 <div class="card">
-                    <img :src="place.image" class="card-img-top image-size" alt="...">
+                    <img :src="place.image" class="card-img image-size" alt="...">
                     <div class="card-body">
 
                         <div class="row justify-content-between">
@@ -242,7 +280,32 @@
     </div>
 
 </div>
+<div class="my-5">
+    <div class="container">
+        <hr>
+    </div>
+    <div class="row justify-content-around mt-2 mb-0 pb-0">
+        <div class="col-md-6 text-muted mb-0 pb-0">
+            <p>The ownership totally goes to Jwana.</p>
+            <div class="d-flex">
 
+                <i class="tim-icons icon-email-85 mr-2 mt-1"></i>
+                <p>Email me at jwanaalfatla1999@gmail.com</p>
+
+            </div>
+        </div>
+        <div class="col-md-3 text-muted mb-0 pb-0">
+            <p class="float-right">لا يوجد لدينا فرع اخر</p>
+            <br>
+        </div>
+    </div>
+        {{--<p class="float-right">--}}
+            {{--<a href="#">Back to top</a>--}}
+        {{--</p>--}}
+        {{--<p>Album example is © Bootstrap, but please download and customize it for yourself!</p>--}}
+        {{--<p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a--}}
+                    {{--href="/docs/4.3/getting-started/introduction/">getting started guide</a>.</p>--}}
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -252,23 +315,23 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <!-- Bootstrap core JavaScript -->
 {{--<script src="vendor/jquery/jquery.min.js"></script>--}}
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/js/agency.js"></script>
+{{--<script src="/js/agency.js"></script>--}}
+<script src="js/agency.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <!-- Plugin JavaScript -->
 {{--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>--}}
 
 <!-- Contact form JavaScript -->
-<script src="js/jqBootstrapValidation.js"></script>
-<script src="js/contact_me.js"></script>
+{{--<script src="js/jqBootstrapValidation.js"></script>--}}
+{{--<script src="js/contact_me.js"></script>--}}
 
 <!-- Custom scripts for this template -->
-<script src="js/agency.min.js"></script>
 <script>
     let vue = new Vue({
         el: "#search",
@@ -278,7 +341,7 @@
                 location: "",
             },
             findPlace: "",
-            places: {},
+            places: [],
             types: [],
             selectedType: null,
             selectedSort: null,
@@ -334,6 +397,7 @@
                 return this.favorited;
             },
             searchedPlaces() {
+
                 return this.places.filter((place) => {
                         return place.place_name.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase())
                             || place.location.toLocaleLowerCase().includes(this.findPlace.toLocaleLowerCase());

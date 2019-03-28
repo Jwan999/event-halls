@@ -11,7 +11,7 @@ class DashboardController extends Controller
 //opening the dashboard
     public function openDashboard()
     {
-        return view('layouts.master');
+        return view('dashboard.mainDashPage');
     }
 
 }

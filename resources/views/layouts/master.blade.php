@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="h-100">
+<html lang="en" class="h-100 scrollbar" id="style-10">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,7 +18,6 @@
         body {
             overflow-y: hidden;
             overflow-x: hidden;
-
             font-family: 'Raleway', sans-serif;
         }
 
@@ -42,6 +41,19 @@
 
         }
 
+        .max-height {
+            max-height: 500px;
+        }
+
+        .max-height-type {
+            max-height: 200px;
+
+        }
+
+        .dark-text {
+            color: black;
+        }
+
         .scrollbar {
             /*margin-left: 30px;*/
             float: left;
@@ -52,17 +64,6 @@
             margin-bottom: 25px;
         }
 
-        .max-height {
-            max-height: 500px;
-        }
-
-        .max-height-type{
-            max-height: 200px;
-
-        }
-        .dark-text{
-            color: black;
-        }
         #style-10::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
             background-color: #F5F5F5;
@@ -87,7 +88,13 @@
             transparent)
         }
 
+        .bar-card-h {
+            height: 46vh;
+        }
 
+        .puple {
+            color: #6e4f90;
+        }
     </style>
 
 </head>
@@ -101,6 +108,10 @@
 <div class="row justify-content-between mt-3">
     <div class="col">
         <div class="sidebar zain-light-bg">
+
+            <h3 class="dark-text puple m-3">Hey {{auth()->user()->name}} :D</h3>
+
+            <hr>
             <ul class="nav">
                 <li>
                     <a href="/dashboard">
@@ -139,7 +150,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/logout">
+                    <a href="/admin/logout">
                         <i class="tim-icons icon-user-run text-dark"></i>
                         <p class="text-dark">Logout</p>
                     </a>
@@ -176,7 +187,7 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="/../assets/js/black-dashboard.js?v=1.0.0" type="text/javascript"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>--}}
 
 @stack('scripts')
 <script>

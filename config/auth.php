@@ -50,6 +50,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -79,7 +83,10 @@ return [
             'driver' => 'eloquent',
             'model' => EventHalls\User::class,
         ],
-
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => EventHalls\Admin::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

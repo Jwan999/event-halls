@@ -17,12 +17,12 @@ Route::get('google/callback', 'Auth\LoginController@handleProviderCallback')
     ->name('login.callback');
 Route::get('/logout', 'Auth\LoginController@logout');
 
-//Route::get('/admin/login', 'Admin\LoginController@showLoginForm')->name("login");
-//Route::post('/admin/login', 'Admin\LoginController@login');
-//Route::get('/admin/logout', 'Admin\LoginController@logout');
+Route::get('/admin/login', 'Admin\LoginController@showLoginForm')->name("login");
+Route::post('/admin/login', 'Admin\LoginController@login');
+Route::get('/admin/logout', 'Admin\LoginController@logout');
 
-Route::group(["prefix" => "/dashboard",], function () {
-    Route::get('/', 'DashboardController@openDashboard');
+Route::group([ "prefix" => "/dashboard",], function () {
+    Route::get('/', 'DashboardController@openDashboard')->middleware('auth:admin');
     Route::get('bookings', 'BookController@index');
 
     Route::get('/places', 'PlaceController@showAllPlaces');

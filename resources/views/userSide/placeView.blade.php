@@ -49,7 +49,7 @@
 
                 <div class="row justify-content-end">
                     <div class="col-auto">
-                        <button type="button" class="btn btn-outline-secondary btn-sm mt-3"><a href="/book">Book
+                        <button type="button" class="btn btn-outline-secondary btn-sm mt-3"><a href="/book/place">Book
                                 place</a></button>
                     </div>
                 </div>

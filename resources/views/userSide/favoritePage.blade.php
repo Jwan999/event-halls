@@ -13,14 +13,13 @@
         </div>
     </div>
 
-
 @endsection
 
 @push('scripts')
     <script>
         let vue = new Vue({
-            el:"#app",
-            data:{},
+            el: "#app",
+            data: {},
         })
     </script>
 @endpush

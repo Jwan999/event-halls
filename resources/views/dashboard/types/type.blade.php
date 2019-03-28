@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-<hr>
+                <hr>
                 <div class="card-body max-height-type scrollbar" id="style-10">
                     <div class="row">
                         <div class="col">
