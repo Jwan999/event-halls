@@ -1,9 +1,9 @@
-@extends('userSide.mainPage')
+@extends('userSide.layouts.master')
 
 @section('content')
     <div class="row justify-content-center mt-5">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-md-8 mt-5">
+            <div class="card mt-5">
                 <div class="card-body">
                     <form action="/book" method="post">
                         @csrf
@@ -22,11 +22,13 @@
                                     <div class="row align-items-center">
                                         <div class="col-md-6 col-6">
 
-                                            <input name="from_hour" type="text" class="form-control" placeholder="Event starts at...">
+                                            <input name="from_hour" type="text" class="form-control"
+                                                   placeholder="Event starts at...">
                                         </div>
                                         <div class="col-md-6 col-6">
 
-                                            <input name="to_hour" type="text" class="form-control" placeholder="Event ends at...">
+                                            <input name="to_hour" type="text" class="form-control"
+                                                   placeholder="Event ends at...">
                                         </div>
                                     </div>
                                 </div>

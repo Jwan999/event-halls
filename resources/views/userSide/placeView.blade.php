@@ -1,9 +1,9 @@
-@extends('userSide.mainPage')
+@extends('userSide.layouts.master')
 
 @section('content')
-    <div class="container">
-        <div id="place" class="row">
-            <div class="col">
+    <div class="container mt-5">
+        <div id="place" class="row justify-content-center">
+            <div class="col-md-10">
 
                 {{--plsce name--}}
                 <div class="row justify-content-start m-5">
@@ -12,51 +12,47 @@
                     </div>
                 </div>
 
-                {{--description + contact info--}}
-                <div class="row justify-content-between ml-5">
-                    <div class="col-md-6">
+                <div class="row justify-content-between">
+                    <div class="col-md-7 mt-2">
+                        <h5>Description:</h5>
                         @{{ place.description }}
                     </div>
-                    <div class="col-md-3 mr-4">
-                        <div class="card">
-                            <div class="card-header zain-bg text-white">
-                              @{{ place.owner.name }}
-                            </div>
-                            <div class="card-body">
-                               @{{ place.owner.email }}<br>
-                              @{{ place.owner.phone }}<br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{--other details--}}
-                <div class="row justify-content-between ml-5 mt-5">
-                    <div class="col text-muted">
+                    <div class="col-md-4 mt-2">
+                        <h5>Other details:</h5>
                         halls people max
                         <br>
                         @{{ place.location }}
                         <br>
                         price range
                     </div>
+                </div>
 
-                    <div class="col-md-3 mr-4">
+                <div class="row justify-content-start">
+                    <div class="col-md-7 mt-2">
+                        <h5>Owner's information:</h5>
+                        @{{ place.owner.name }}<br>
+                        @{{ place.owner.email }}<br>
+                        @{{ place.owner.phone }}<br>
+                    </div>
+                    <div class="col-md-5 mt-2">
                         <div class="card">
-                            <div class="card-header zain-bg text-white">
+                            <div class="card-header zain-bg">
                                 availability
                             </div>
                             <div class="card-body">
                                 calender
                             </div>
                         </div>
-                        <div class="row justify-content-start">
-                            <div class="col-auto">
-                                <button type="button" class="btn btn-outline-secondary btn-sm mt-3"><a href="/book">Book
-                                        place</a></button>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 
+                <div class="row justify-content-end">
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-outline-secondary btn-sm mt-3"><a href="/book">Book
+                                place</a></button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

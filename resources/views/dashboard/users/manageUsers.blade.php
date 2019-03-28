@@ -2,43 +2,46 @@
 
 @section('content')
 
-    <div id="user" class="row">
-        <div class="col">
-            {{--search bar--}}
-            <div class="row justify-content-center mt-5 mb-2">
-                <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <input v-model="findUser" type="text" class="form-control"
-                               placeholder="Enter a user name">
+
+    <div id="user" class="row justify-content-center mt-1">
+        <div class="col-md-10">
+            <div class="card zain-light-bg max-height">
+                <div class="row justify-content-between mt-4 mx-3">
+                    <div class="col-md-6">
+                        <h3 class="text-dark">Users:</h3>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-zoom-split text-dark"></i>
+                                </div>
+                            </div>
+                            <input v-model="findUser" type="text" class="form-control text-dark"
+                                   placeholder="Enter a user name">
+                        </div>
                     </div>
                 </div>
-            </div>
-            {{--Users table--}}
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <table class="table table-borderless">
-                        <thead class="bg-dark text-white">
-                        <tr>
-                            <th scope="col">User name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Booked places</th>
+                <div class="card-body scrollbar" id="style-10">
 
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="text-dark">User name</th>
+                            <th class="text-dark">Email</th>
+                            <th class="text-dark">Booked places</th>
                         </tr>
                         </thead>
-
-                        <tbody class="bg-white">
+                        <tbody>
                         <tr v-for="user in searchedUsers">
-                            <td><a>@{{user.name}}</a></td>
-                            <td>@{{user.email}}</td>
-
-                            <td>@{{user.place_id}}</td>
+                            <td><a class="text-dark">@{{user.name}}</a></td>
+                            <td><a class="text-dark">@{{user.email}}</a></td>
+                            <td><a class="text-dark">@{{user.place_name}}</a></td>
                         </tr>
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
         </div>
     </div>
 

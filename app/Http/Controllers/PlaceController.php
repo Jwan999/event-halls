@@ -6,6 +6,7 @@ use EventHalls\Owner;
 use \EventHalls\Place;
 use EventHalls\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
 class PlaceController extends Controller
@@ -49,9 +50,10 @@ class PlaceController extends Controller
         }
 
         $places = $queryBuilder->get();
+
         $response = [
             "success" => true,
-            "places" => $places
+            "places" => $places,
         ];
         return Response::json($response);
     }
@@ -66,7 +68,9 @@ class PlaceController extends Controller
     public function delete(Place $place)
     {
         $place->delete();
-        return Response::json('/dashboard/places');
+        $data = ["success" => true];
+
+        return Response::json($data);
     }
 
     public function editView(Place $place)
@@ -102,9 +106,9 @@ class PlaceController extends Controller
     }
 
 //showing the adding places view from the dashboard
-    public function showAddPlace()
+    public function showAddPlace(Owner $owner)
     {
-        return view('dashboard.places.addPlace');
+        return view('dashboard.places.addPlace', ["owner" => $owner]);
     }
 
     // adding a place from the dashboard
@@ -115,8 +119,9 @@ class PlaceController extends Controller
             "type" => "required",
             'owner_id' => 'required',
             "image" => "required|image",
-              "location" => "required",
+            "location" => "required",
             "hall_max" => "required",
+            "hall_name" => "required",
             "low_price" => "required",
             "high_price" => "required",
             "description" => "required",
@@ -137,7 +142,7 @@ class PlaceController extends Controller
 
     }
 
-//function let's the user to add a place from the usersite
+//function let's the user to add a place from the userSite
     public function savePlaceRedirectHome(Request $request)
     {
         $rules = [
@@ -157,4 +162,20 @@ class PlaceController extends Controller
         return Response::redirectTo("/");
 
     }
+
+    public function favoritePlace(Place $place)
+    {
+        Auth::user()->favorites()->attach($place->id);
+
+        return back();
+    }
+
+
+    public function unFavoritePlace(Place $place)
+    {
+        Auth::user()->favorites()->detach($place->id);
+
+        return back();
+    }
+
 }

@@ -2,47 +2,64 @@
 
 @section('content')
 
-    <div class="row justify-content-start m-5">
-        <div class="col-md-4">
-            @include('layouts.errors')
-            {{--adding places types--}}
-            <form action="/dashboard/types/add" method="post">
-                @csrf
-                <div class="card ">
-                    <div class="card-body">
-                        <div class="row justify-content-center">
-                            <div class="col">
+
+    <div id="type" class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card zain-light-bg">
+                <div class="card-body">
+                    {{--adding types--}}
+
+                    <div class="row justify-content-start">
+                        <div class="col-md-6 mt-0 pt-0">
+                            <h3 class="m-0 pb-2 text-dark">
+                                Add a type
+                            </h3>
+                            <form action="/dashboard/types/add" method="post">
+                                @csrf
                                 <input class="form-control" name="type" type="text" placeholder="Place type">
-                                <div class="row justify-content-end">
+                                <div class="row justify-content-start">
                                     <div class="col-auto">
-                                        <button type="submit" class="btn btn-outline-secondary btn-sm mt-2">Submit
-                                        </button>
+                                        <button type="submit" class="btn btn-default btn-sm btn-simple">Add</button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
+<hr>
+                <div class="card-body max-height-type scrollbar" id="style-10">
+                    <div class="row">
+                        <div class="col">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class=" text-dark">Type</th>
+                                    <th class=" text-dark">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="type in types">
+                                    <td class=" text-dark">
+                                        <a class="text-dark" href="">@{{type.type}}</a>
+                                    </td>
+                                    <td class="td-actions">
+                                        <button @click="removeType(type.id)" type="button" rel="tooltip"
+                                                class="btn btn-danger btn-link btn-icon btn-sm">
+                                            <i class="tim-icons icon-simple-remove text-dark"></i>
+                                        </button>
 
-    {{--places types--}}
-    <div id="type" class="row justify-content-start m-5">
-        <div v-for="type in types" class="col-md-4 mt-3">
-            <div class="card zain-bg">
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item text-center">@{{type.type}}</li>
-                    </ul>
-                    <div class="row justify-content-end mt-2">
-                        <div class="col-auto m-0 ">
-                            <span @click="removeType(type.id)" class="badge badge-danger">Delete</span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
+
     </div>
 
 

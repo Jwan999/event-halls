@@ -21,8 +21,9 @@ Route::get('/logout', 'Auth\LoginController@logout');
 //Route::post('/admin/login', 'Admin\LoginController@login');
 //Route::get('/admin/logout', 'Admin\LoginController@logout');
 
-Route::group([ "prefix" => "/dashboard",], function () {
+Route::group(["prefix" => "/dashboard",], function () {
     Route::get('/', 'DashboardController@openDashboard');
+    Route::get('bookings', 'BookController@index');
 
     Route::get('/places', 'PlaceController@showAllPlaces');
     Route::get('/places/place/{id}', 'PlaceController@placeView');
@@ -58,17 +59,30 @@ Route::get('/', 'UserSiteController@mainPageView');
 Route::get('/{id}', 'UserSiteController@mainPageView');
 Route::get('/places/place/{id}', 'UserSiteController@placeView');
 
-//Route::group(["middleware" => "auth:user"], function () {
-Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView');
-Route::post('/places/add/{owner}', 'PlaceController@savePlaceRedirectHome');
-Route::get('/favorites', 'FavoriteController@index');
-Route::get('/owners/add', 'UserSiteController@showAddOwner');
-Route::post('/owners/add', 'OwnerController@addOwnerUserSite');
-Route::post('/favorites/add/{place}', 'FavoriteController@store');
-//Route::get('/api/user','UserSiteController@currentUser');
-Route::get('/book', 'BookController@index');
-//});
+Route::group(["middleware" => "auth"], function () {
+    Route::get('/places/add/{owner}', 'UserSiteController@addPlaceView');
+    Route::post('/places/add/{owner}', 'PlaceController@savePlaceRedirectHome');
 
+    Route::get('/owners/add', 'UserSiteController@showAddOwner');
+    Route::post('/owners/add', 'OwnerController@addOwnerUserSite');
+
+    Route::post('/favorite/{place}', 'PlaceController@favoritePlace');
+    Route::post('/unfavorite/{place}', 'PlaceController@unFavoritePlace');
+//    Route::get('/favorites', 'PlaceController');
+
+//    Route::get('/book', '@index');
+//    Route::get('bookings', 'BookController@index');
+
+});
+
+Route::group(["prefix" => "/book/place","middleware" => "auth"], function () {
+        Route::get('/', 'BookController@index');
+});
+
+
+Route::group(["prefix" => "/favorites/user","middleware" => "auth"], function () {
+    Route::get('/', 'FavoriteController@index');
+});
 
 //Auth::routes();
 //

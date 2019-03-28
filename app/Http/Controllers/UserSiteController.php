@@ -14,7 +14,7 @@ class UserSiteController extends Controller
 {
     public function mainPageView()
     {
-        return view('userSide.searchPage');
+        return view('userSide.mainPage');
     }
 
     public function placeView()

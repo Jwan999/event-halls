@@ -1,10 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+
     <div id="app" class="row justify-content-center mt-1">
-        <div class="col-md-11">
-            <div class="card zain-light-bg">
-                <div class="row justify-content-between m-3">
+        <div class="col-md-10">
+            <div class="card zain-light-bg max-height">
+                <div class="row justify-content-between mt-4 mx-3">
+                    <div class="col-md-6">
+                        <h3 class="text-dark">Places:</h3>
+                    </div>
                     <div class="col-md-5">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -12,34 +16,33 @@
                                     <i class="tim-icons icon-zoom-split text-dark"></i>
                                 </div>
                             </div>
-                            <input v-model="findPlace" type="email" class="form-control"
+                            <input v-model="findPlace" type="email" class="form-control text-dark"
                                    placeholder="Enter a place name type or location">
                         </div>
                     </div>
-                    <div class="col-auto">
-                        <button href="/dashboard/owners/add" type="button" rel="tooltip"
-                                class="btn btn-link btn-sm">
-                            <i class="tim-icons icon-simple-add m-0 pt-3"></i>
-                        </button>
+                    <div class="col-md-1">
+                        <a href="/dashboard/owners/add">
+                            <i class="tim-icons icon-simple-add text-dark text-center p-2 m-0"></i></a>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body scrollbar" id="style-10">
+
                     <table class="table">
                         <thead>
-                        <tr>
-                            <th class=" text-dark">place name</th>
-                            <th class=" text-dark">type</th>
-                            <th class=" text-dark">location</th>
-                            <th class=" text-dark">actions</th>
+                        <tr class="text-center">
+                            <th class="text-dark">place name</th>
+                            <th class="text-dark">type</th>
+                            <th class="text-dark">location</th>
+                            <th class="text-dark">actions</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                         <tr v-for="place in searchedPlaces">
                             <td class=" text-dark">
                                 <a class="text-dark" :href="`/dashboard/places/${place.id}`">@{{place.place_name}}</a>
                             </td>
-                            <td class=" text-dark">@{{place.type}}</td>
-                            <td class=" text-dark">@{{place.location}}</td>
+                            <td class="dark-text"><a class="text-dark">@{{place.type}}</a></td>
+                            <td class="dark-text"><a class="text-dark">@{{place.location}}</a></td>
                             <td class="td-actions ">
                                 <button type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm">
                                     <i :href=`/dashboard/places/${place.id}`
@@ -59,8 +62,6 @@
 
         </div>
     </div>
-
-
 
 @endsection
 

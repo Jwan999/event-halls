@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--     Fonts and icons     -->
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <!-- CSS Files -->
     <link href="/../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet"/>
@@ -13,7 +16,9 @@
     <title>Event halls</title>
     <style>
         body {
+            overflow-y: hidden;
             overflow-x: hidden;
+
             font-family: 'Raleway', sans-serif;
         }
 
@@ -23,7 +28,7 @@
         }
 
         .zain-light-bg {
-            background: linear-gradient(to bottom right, #e3e3e3 0%, #e3e3e3 100%)
+            background: #FFFFFF
         }
 
         .space {
@@ -32,7 +37,57 @@
 
         .nav-font {
             font-size: x-large;
+
+            font-family: 'Kaushan Script', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
         }
+
+        .scrollbar {
+            /*margin-left: 30px;*/
+            float: left;
+            height: 480px;
+            width: 100%;
+            /*background: #F5F5F5;*/
+            overflow-y: scroll;
+            margin-bottom: 25px;
+        }
+
+        .max-height {
+            max-height: 500px;
+        }
+
+        .max-height-type{
+            max-height: 200px;
+
+        }
+        .dark-text{
+            color: black;
+        }
+        #style-10::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+            border-radius: 10px;
+        }
+
+        #style-10::-webkit-scrollbar {
+            width: 10px;
+            background-color: #F5F5F5;
+        }
+
+        #style-10::-webkit-scrollbar-thumb {
+            background-color: #AAA;
+            border-radius: 10px;
+            background-image: -webkit-linear-gradient(90deg,
+            rgba(0, 0, 0, .2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(0, 0, 0, .2) 50%,
+            rgba(0, 0, 0, .2) 75%,
+            transparent 75%,
+            transparent)
+        }
+
+
     </style>
 
 </head>
@@ -40,7 +95,7 @@
 <body class=" h-100 zain-bg">
 <nav class="navbar ml-3 navbar-transparent mt-2">
 
-    <a class="text-white nav-font" href="#">Dashboard</a>
+    <a class="text-white nav-font ml-3" href="#">Dashboard</a>
 
 </nav>
 <div class="row justify-content-between mt-3">
@@ -49,13 +104,13 @@
             <ul class="nav">
                 <li>
                     <a href="/dashboard">
-                        <i class="tim-icons icon-chart-pie-36 text-dark"></i>
+                        <i class="tim-icons icon-chart-bar-32 text-dark"></i>
                         <p class="text-dark">Dashboard</p>
                     </a>
                 </li>
                 <li>
                     <a href="/">
-                        <i class="tim-icons icon-single-02 text-dark"></i>
+                        <i class="tim-icons icon-chart-pie-36 text-dark"></i>
                         <p class="text-dark">Main page</p>
                     </a>
                 </li>
@@ -67,25 +122,25 @@
                 </li>
                 <li>
                     <a href="/dashboard/owners">
-                        <i class="tim-icons icon-align-center text-dark"></i>
+                        <i class="tim-icons icon-book-bookmark text-dark"></i>
                         <p class="text-dark">Owners</p>
                     </a>
                 </li>
                 <li>
                     <a href="/dashboard/types">
-                        <i class="tim-icons icon-world text-dark"></i>
+                        <i class="tim-icons icon-molecule-40 text-dark"></i>
                         <p class="text-dark">Types</p>
                     </a>
                 </li>
                 <li>
                     <a href="/dashboard/users">
-                        <i class="tim-icons icon-spaceship text-dark"></i>
+                        <i class="tim-icons icon-single-02 text-dark"></i>
                         <p class="text-dark">Users</p>
                     </a>
                 </li>
                 <li>
                     <a href="/logout">
-                        <i class="tim-icons icon-spaceship text-dark"></i>
+                        <i class="tim-icons icon-user-run text-dark"></i>
                         <p class="text-dark">Logout</p>
                     </a>
                 </li>

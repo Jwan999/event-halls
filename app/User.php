@@ -15,7 +15,6 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
 
-    
 
     /**
      * The attributes that are mass assignable.
@@ -54,7 +53,9 @@ class User extends Authenticatable
         return $this->hasMany(Place::class);
     }
 
-    public function favorites(){
-        return $this->hasMany(Favorite::class);
+    public function favorites()
+    {
+        return $this->belongsToMany(Place::class, 'favorites', 'user_id', 'place_id')->withTimeStamps();
     }
+
 }

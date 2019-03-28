@@ -1,4 +1,4 @@
-@extends('userSide.mainPage')
+@extends('userSide.layouts.master')
 
 @section('content')
 

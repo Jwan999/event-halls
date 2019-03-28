@@ -2,24 +2,21 @@
 
 @section('content')
 
-    <div id="owner" class="row justify-content-center mt-5">
-        <div class="col">
-
-            <div class="row justify-content-center mb-5">
-                <div class="col-md-6">
-                    <ul class="list-group">
-                        <li class="list-group-item zain-bg text-white">Owners contacts
-                            {{--<a href="/dashboard/owners/add"><h5 class="text-white">+</h5></a>--}}
-                        </li>
-                        <li v-for="owner in owners" class="list-group-item"> @{{ owner.email }}<br>
-                            <smaill> @{{ owner.phone }}</smaill>
-                        </li>
-                    </ul>
+    <div id="owner" class="row justify-content-center">
+        <div class="col-md-6 ">
+            {{--class="table-full-width table-responsive ps ps--active-y ps--scrolling-y"--}}
+            <div class="card zain-light-bg">
+                <div class="card-header ">
+                    <h4 class="text-dark">Owners information:</h4>
+                </div>
+                <div class="card-body scrollbar" id="style-10">
+                    <li v-for="owner in owners" class="list-group-item text-dark"> @{{ owner.email }}<br>
+                        <smaill> @{{ owner.phone }}</smaill>
+                    </li>
                 </div>
             </div>
         </div>
     </div>
-
 
 @endsection
 

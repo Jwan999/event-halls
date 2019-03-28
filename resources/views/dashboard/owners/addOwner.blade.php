@@ -6,7 +6,7 @@
             @include('layouts.errors')
             <div class="card zain-light-bg">
                 <div class="card-header">
-                    <h3 class="text-dark mb-0">Owner</h3>
+                    <h3 class="text-dark mb-0">Adding an owner</h3>
                 </div>
                 <div class="card-body">
                     <form action="/dashboard/owners/add" method="post">
@@ -14,13 +14,13 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <input name="name" type="text" class="form-control" placeholder="Full name">
+                                    <input name="name" type="text" class="form-control  text-dark" placeholder="Full name">
                                 </div>
                                 <div class="form-group">
-                                    <input name="email" type="text" class="form-control" placeholder="Email">
+                                    <input name="email" type="text" class="form-control text-dark" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input name="phone" type="text" class="form-control" placeholder="Phone number">
+                                    <input name="phone" type="text" class="form-control text-dark" placeholder="Phone number">
                                 </div>
                                 {{--<div class="form-group form-check">--}}
                                 {{--<input v-model="give_sponsorship" name="give_sponsorship" type="checkbox"--}}
