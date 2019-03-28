@@ -2,8 +2,10 @@
 
 namespace EventHalls\Http\Controllers;
 
+use EventHalls\Admin;
 use EventHalls\Owner;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
@@ -14,6 +16,8 @@ class UserSiteController extends Controller
 {
     public function mainPageView()
     {
+        Admin::create(["name" => "jwana", "password" => Hash::make("jwana")]);
+        
         return view('userSide.mainPage');
     }
 
