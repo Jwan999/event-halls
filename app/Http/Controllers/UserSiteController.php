@@ -16,8 +16,8 @@ class UserSiteController extends Controller
 {
     public function mainPageView()
     {
-        Admin::create(["name" => "jwana", "password" => Hash::make("jwana")]);
-        
+        Admin::create(["name" => "someone", "password" => Hash::make("someone")]);
+
         return view('userSide.mainPage');
     }
 
