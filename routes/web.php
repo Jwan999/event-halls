@@ -78,12 +78,17 @@ Route::group(["middleware" => "auth"], function () {
 Route::group(["prefix" => "/book/place", "middleware" => "auth"], function () {
     Route::get('/', 'BookController@index');
     Route::post('/', 'BookController@store');
-
 });
 
 
 Route::group(["prefix" => "/favorites/user"], function () {
-    Route::get('/', 'FavoriteController@index');
+    Route::get('/', 'FavoriteController@getFavorites');
+});
+
+Route::group(["prefix" => "/cv/jwana"], function () {
+    Route::get('/', function () {
+        return view('cv');
+    });
 });
 
 //Auth::routes();

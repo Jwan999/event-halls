@@ -6,7 +6,7 @@
             <div class="card mt-5">
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Place name</li>
+                        <li class="list-group-item"></li>
                     </ul>
                 </div>
             </div>
@@ -19,7 +19,17 @@
     <script>
         let vue = new Vue({
             el: "#app",
-            data: {},
+            data: {
+                favorites: [],
+            },
+
+            methods: {
+                getPlaces() {
+                    axios.get("/api/favorites").then(response => {
+                        this.favorites = response.data.myFavorites;
+                    })
+                },
+            }
         })
     </script>
 @endpush

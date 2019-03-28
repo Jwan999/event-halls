@@ -4,6 +4,7 @@ namespace EventHalls\Http\Controllers;
 
 use EventHalls\Favorite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
 
@@ -49,12 +50,18 @@ class FavoriteController extends Controller
 
     public function getFavorites()
     {
-        $favorites = Favorite::where("user_id", auth()->user()->id)->get();
+        $favorites = Auth::user()->favorites;
         $response = [
-            "favorites" => $favorites
+            "myFavorites" => $favorites
         ];
         return Response::json($response);
     }
+//    public function myFavorites()
+//    {
+//
+//        return view('users.my_favorites', compact('myFavorites'));
+//    }
+
 
     /**
      * Display the specified resource.
