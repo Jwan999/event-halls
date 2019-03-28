@@ -25,23 +25,23 @@ Route::group(["prefix" => "/dashboard",], function () {
     Route::get('/', 'DashboardController@openDashboard')->middleware('auth:admin');
     Route::get('bookings', 'BookController@index');
 
-    Route::get('/places', 'PlaceController@showAllPlaces');
-    Route::get('/places/place/{id}', 'PlaceController@placeView');
-    Route::delete('/places/{place}', 'PlaceController@delete');
-    Route::get('/places/{place}', 'PlaceController@editView');
-    Route::patch('/places/{place}/edit', 'PlaceController@edit');
-    Route::post('/places/add/{owner}', 'PlaceController@addPlace');
-    Route::get('/places/add/{owner}', 'PlaceController@showAddPlace');
+    Route::get('/places', 'PlaceController@showAllPlaces')->middleware('auth:admin');
+    Route::get('/places/place/{id}', 'PlaceController@placeView')->middleware('auth:admin');
+    Route::delete('/places/{place}', 'PlaceController@delete')->middleware('auth:admin');
+    Route::get('/places/{place}', 'PlaceController@editView')->middleware('auth:admin');
+    Route::patch('/places/{place}/edit', 'PlaceController@edit')->middleware('auth:admin');
+    Route::post('/places/add/{owner}', 'PlaceController@addPlace')->middleware('auth:admin');
+    Route::get('/places/add/{owner}', 'PlaceController@showAddPlace')->middleware('auth:admin');
 //    {user}
-    Route::get('/owners/add', 'OwnerController@showAddOwnerView');
-    Route::get('/owners', 'OwnerController@ownersView');
-    Route::post('/owners/add', 'OwnerController@addOwner');
+    Route::get('/owners/add', 'OwnerController@showAddOwnerView')->middleware('auth:admin');
+    Route::get('/owners', 'OwnerController@ownersView')->middleware('auth:admin');
+    Route::post('/owners/add', 'OwnerController@addOwner')->middleware('auth:admin');
 
-    Route::post('/types/add', 'TypeController@addPlaceType');
-    Route::get('/types', 'TypeController@typesView');
-    Route::delete('/types/{type}', 'TypeController@delete');
+    Route::post('/types/add', 'TypeController@addPlaceType')->middleware('auth:admin');
+    Route::get('/types', 'TypeController@typesView')->middleware('auth:admin');
+    Route::delete('/types/{type}', 'TypeController@delete')->middleware('auth:admin');
 
-    Route::get('/users', 'UserController@index');
+    Route::get('/users', 'UserController@index')->middleware('auth:admin');
 });
 
 Route::group(["prefix" => "/api"], function () {
