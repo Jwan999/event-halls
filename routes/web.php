@@ -21,7 +21,7 @@ Route::get('/admin/login', 'Admin\LoginController@showLoginForm')->name("login")
 Route::post('/admin/login', 'Admin\LoginController@login');
 Route::get('/admin/logout', 'Admin\LoginController@logout');
 
-Route::group([ "prefix" => "/dashboard",], function () {
+Route::group(["prefix" => "/dashboard",], function () {
     Route::get('/', 'DashboardController@openDashboard')->middleware('auth:admin');
     Route::get('bookings', 'BookController@index');
 
@@ -75,12 +75,14 @@ Route::group(["middleware" => "auth"], function () {
 
 });
 
-Route::group(["prefix" => "/book/place","middleware" => "auth"], function () {
-        Route::get('/', 'BookController@index');
+Route::group(["prefix" => "/book/place", "middleware" => "auth"], function () {
+    Route::get('/', 'BookController@index');
+    Route::post('/', 'BookController@store');
+
 });
 
 
-Route::group(["prefix" => "/favorites/user","middleware" => "auth"], function () {
+Route::group(["prefix" => "/favorites/user"], function () {
     Route::get('/', 'FavoriteController@index');
 });
 

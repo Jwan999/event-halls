@@ -14,25 +14,8 @@
 
                 <div class="row justify-content-between">
                     <div class="col-md-7 mt-2">
-                        <h5>Description:</h5>
+                        <h4>Description:</h4>
                         @{{ place.description }}
-                    </div>
-                    <div class="col-md-4 mt-2">
-                        <h5>Other details:</h5>
-                        halls people max
-                        <br>
-                        @{{ place.location }}
-                        <br>
-                        price range
-                    </div>
-                </div>
-
-                <div class="row justify-content-start">
-                    <div class="col-md-7 mt-2">
-                        <h5>Owner's information:</h5>
-                        @{{ place.owner.name }}<br>
-                        @{{ place.owner.email }}<br>
-                        @{{ place.owner.phone }}<br>
                     </div>
                     <div class="col-md-5 mt-2">
                         <div class="card">
@@ -47,12 +30,35 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-end">
-                    <div class="col-auto">
-                        <button type="button" class="btn btn-outline-secondary btn-sm mt-3"><a href="/book/place">Book
-                                place</a></button>
+                <div class="row justify-content-between">
+                    <div class="col-md-9 mt-4">
+                        <h4>Owner's information:</h4>
+                        @{{ place.owner.name }}<br>
+                        @{{ place.owner.email }}<br>
+                        @{{ place.owner.phone }}<br>
+                    </div>
+                    <div class="col-md-3 mt-4 text-muted">
+                        <h5>Other details:</h5>
+                        halls people max
+                        <br>
+                        @{{ place.location }}
+                        <br>
+                        price range
                     </div>
                 </div>
+                <div class="row">
+
+                </div>
+                @if(Auth::check())
+                    <div class="row justify-content-end">
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-outline-secondary btn-sm mt-3"><a href="/book/place">Book
+                                    place</a></button>
+                        </div>
+                    </div>
+                    @endif
+
+
             </div>
         </div>
     </div>
